@@ -36,7 +36,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
 
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-12">
         <article>
-          <h1 className="text-3xl md:text-4xl font-bold font-heading text-brand-900 dark:text-brand-50 mb-6">
+          <h1 className="text-3xl md:text-4xl font-semibold font-heading text-brand-800 mb-6">
             {meta.title}
           </h1>
           <div className="prose">{rendered}</div>

@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { organizationSchema } from '@/lib/schema';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://resources.councilfire.org'),
@@ -28,13 +25,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{
-          __html: `try{const t=localStorage.getItem('theme'),d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}`,
-        }} />
-      </head>
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-white text-brand-900">
         <JsonLd data={organizationSchema()} />
         <Header />
         <main className="flex-1">{children}</main>
