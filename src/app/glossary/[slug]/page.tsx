@@ -54,37 +54,53 @@ export default async function GlossaryPage({ params }: Props) {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <JsonLd data={schemas} />
-      <Breadcrumb items={[{ label: 'Glossary', href: '/glossary' }, { label: meta.title }]} />
-
-      <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-12">
-        <article>
-          <h1 className="text-3xl md:text-4xl font-semibold font-heading text-brand-800 mb-2">
+    <>
+      {/* Hero area */}
+      <section className="bg-gradient-to-b from-brand-50 to-white border-b border-brand-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+          <JsonLd data={schemas} />
+          <Breadcrumb items={[{ label: 'Glossary', href: '/glossary' }, { label: meta.title }]} />
+          <div className="flex items-start gap-3 flex-wrap">
+            {meta.category && (
+              <span className="inline-flex items-center rounded-full bg-teal-50 border border-teal-200 px-3 py-1 text-sm font-medium text-teal-700 mt-2">
+                {meta.category as string}
+              </span>
+            )}
+          </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-brand-800 mt-3 tracking-tight">
             What is {meta.title}?
           </h1>
+        </div>
+      </section>
 
-          {typeof meta.definition === 'string' && <DefinitionBox>{meta.definition}</DefinitionBox>}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
+          <article>
+            {typeof meta.definition === 'string' && <DefinitionBox>{meta.definition}</DefinitionBox>}
 
-          <div className="prose mt-8">{rendered}</div>
+            <div className="prose mt-8">{rendered}</div>
 
-          {faqs.length > 0 && <FAQ items={faqs} />}
+            {faqs.length > 0 && <FAQ items={faqs} />}
 
-          <CTA topic={meta.title} />
-        </article>
+            <CTA topic={meta.title} />
+          </article>
 
-        <aside className="mt-10 lg:mt-0 space-y-6">
-          {relatedTerms.length > 0 && (
-            <RelatedSidebar
-              title="Related Terms"
-              items={relatedTerms.map((t) => ({
-                title: t,
-                href: `/glossary/${t.toLowerCase().replace(/[\s()]+/g, '-')}`,
-              }))}
-            />
-          )}
-        </aside>
+          <aside className="mt-10 lg:mt-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
+            {relatedTerms.length > 0 && (
+              <RelatedSidebar
+                title="Related Terms"
+                items={relatedTerms.map((t) => ({
+                  title: t,
+                  href: `/glossary/${t.toLowerCase().replace(/[\s()]+/g, '-')}`,
+                }))}
+              />
+            )}
+            {meta.lastUpdated && (
+              <p className="text-xs text-brand-400 pl-1">Last updated: {meta.lastUpdated as string}</p>
+            )}
+          </aside>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

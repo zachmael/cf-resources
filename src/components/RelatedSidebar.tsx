@@ -10,23 +10,19 @@ export default function RelatedSidebar({ items, title = 'Related Resources' }: {
   if (!items.length) return null;
 
   return (
-    <aside className="rounded-xl border border-brand-200 bg-brand-50 p-6 shadow-sm">
-      <h3 className="font-heading font-semibold text-brand-800 mb-4">{title}</h3>
-      <ul className="space-y-2">
+    <aside className="rounded-2xl border border-brand-200 bg-white p-6 shadow-sm">
+      <h3 className="font-heading font-semibold text-brand-800 mb-4 text-sm uppercase tracking-wider">{title}</h3>
+      <div className="flex flex-wrap gap-2">
         {items.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="block text-sm text-brand-600 hover:text-teal-500 transition-colors"
-            >
-              {item.title}
-              {item.section && (
-                <span className="ml-1 text-xs text-brand-400">({item.section})</span>
-              )}
-            </Link>
-          </li>
+          <Link
+            key={item.href}
+            href={item.href}
+            className="inline-flex items-center rounded-full bg-brand-50 border border-brand-200 px-3.5 py-1.5 text-sm text-brand-700 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-700 transition-all"
+          >
+            {item.title}
+          </Link>
         ))}
-      </ul>
+      </div>
     </aside>
   );
 }

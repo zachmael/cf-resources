@@ -13,23 +13,29 @@
   body {
     @apply bg-white text-brand-900;
   }
+  ::selection {
+    @apply bg-teal-200 text-teal-900;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-teal-500;
+  }
 }
 
 @layer components {
   .prose {
-    @apply max-w-none text-brand-700 leading-relaxed;
+    @apply max-w-none text-brand-700 leading-[1.8] text-[17px];
   }
   .prose h2 {
-    @apply text-2xl font-semibold font-heading text-brand-800 mt-10 mb-4;
+    @apply text-2xl font-semibold font-heading text-brand-800 mt-12 mb-4 scroll-mt-24;
   }
   .prose h3 {
-    @apply text-xl font-semibold font-heading text-brand-800 mt-8 mb-3;
+    @apply text-xl font-semibold font-heading text-brand-800 mt-8 mb-3 scroll-mt-24;
   }
   .prose p {
-    @apply mb-4;
+    @apply mb-5;
   }
   .prose ul, .prose ol {
-    @apply mb-4 pl-6;
+    @apply mb-5 pl-6;
   }
   .prose li {
     @apply mb-2;
@@ -41,18 +47,21 @@
     @apply list-decimal;
   }
   .prose a {
-    @apply text-teal-500 underline decoration-teal-300 hover:decoration-teal-500 transition-colors;
+    @apply text-teal-500 underline decoration-teal-300 underline-offset-2 hover:decoration-teal-500 transition-colors;
   }
   .prose strong {
     @apply font-semibold text-brand-800;
   }
   .prose table {
-    @apply w-full border-collapse my-6;
+    @apply w-full border-collapse my-8 rounded-lg overflow-hidden;
   }
   .prose th {
     @apply bg-brand-50 text-left px-4 py-3 text-sm font-semibold text-brand-800 border border-brand-200;
   }
   .prose td {
     @apply px-4 py-3 text-sm border border-brand-200;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-teal-400 pl-5 italic text-brand-600 my-6;
   }
 }

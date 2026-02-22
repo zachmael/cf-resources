@@ -5,6 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        amber: {
+          50: '#fef8f0',
+          100: '#fdecd4',
+          200: '#fbd5a3',
+          300: '#f6b96a',
+          400: '#f0a040',
+          500: '#E8912D',
+          600: '#d07a1f',
+          700: '#ad6119',
+          800: '#8a4d17',
+          900: '#6f3d14',
+        },
         brand: {
           50: '#f9f9f9',
           100: '#f0f0f0',
@@ -19,7 +31,7 @@ const config: Config = {
           950: '#29292b',
         },
         teal: {
-          50: '#f0f9fa',
+          50: '#f0fafb',
           100: '#d4eff3',
           200: '#a8dfe7',
           300: '#6fc9d6',
@@ -29,6 +41,7 @@ const config: Config = {
           700: '#1a5663',
           800: '#15434e',
           900: '#0f2f38',
+          950: '#091e24',
         },
         blue: {
           50: '#f0f6fb',
@@ -46,6 +59,20 @@ const config: Config = {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         heading: ['"Inter Display"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-up': {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'slide-up': 'slide-up 0.6s ease-out forwards',
       },
     },
   },

@@ -17,57 +17,72 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#eaeaea] bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+    <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/70 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a href="https://www.councilfire.org" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="Council Fire" width={32} height={32} className="h-8 w-auto" />
-            <span className="font-heading text-xl font-semibold text-brand-800">Resources</span>
+          <a href="https://www.councilfire.org" className="flex items-center gap-2.5 shrink-0">
+            <Image src="/logo-dark.png" alt="Council Fire" width={4769} height={1242} className="h-7 w-auto" priority />
           </a>
 
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 rounded-md text-sm font-medium text-brand-700 hover:text-teal-500 transition-colors"
+                className="px-3 py-2 rounded-lg text-sm font-medium text-brand-600 hover:text-brand-800 hover:bg-brand-50 transition-all"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => setOpen(!open)}
-              className="p-2 rounded-md text-brand-700 hover:bg-brand-50"
-              aria-expanded={open}
-              aria-label="Toggle navigation"
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="https://www.councilfire.org/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-600 transition-all hover:shadow-md"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {open ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
+              Contact Us
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </a>
           </div>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2 rounded-lg text-brand-600 hover:bg-brand-50 transition-colors"
+            aria-expanded={open}
+            aria-label="Toggle navigation"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {open ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-[#eaeaea] bg-white px-4 py-3" aria-label="Mobile navigation">
+        <nav className="lg:hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-xl px-4 py-4 space-y-1" aria-label="Mobile navigation">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-teal-500 hover:bg-brand-50"
+              className="block px-3 py-2.5 rounded-lg text-base font-medium text-brand-700 hover:text-teal-500 hover:bg-brand-50 transition-all"
             >
               {item.label}
             </Link>
           ))}
+          <a
+            href="https://www.councilfire.org/contact"
+            className="block mt-3 text-center rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white"
+          >
+            Contact Us →
+          </a>
         </nav>
       )}
     </header>
