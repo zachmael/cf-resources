@@ -1,20 +1,38 @@
 export default function CTA({ topic }: { topic: string }) {
   return (
-    <section className="mt-16 relative overflow-hidden rounded-2xl shadow-lg">
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-teal-700" />
-      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="relative p-10 md:p-12">
-        <h2 className="text-2xl md:text-3xl font-bold font-heading text-white">Need help with {topic}?</h2>
-        <p className="mt-3 text-teal-100 text-lg max-w-xl leading-relaxed">
+    <section className="mt-16 relative overflow-hidden rounded-2xl">
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1518173946687-a4c52f2e0c80?w=1200&h=400&fit=crop"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-teal-800/85" />
+      </div>
+      {/* Decorative shapes */}
+      <div className="absolute -top-16 -right-16 w-[250px] h-[250px] rounded-full bg-white/5" />
+      <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-white/5" />
+
+      <div className="relative p-10 md:p-14">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-2 h-2 rounded-full bg-amber-400" />
+          <span className="text-sm font-semibold text-amber-300 uppercase tracking-wider">Let&apos;s Talk</span>
+        </div>
+        <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">Need help with {topic}?</h2>
+        <p className="mt-3 text-teal-100/80 text-lg max-w-xl leading-relaxed">
           Our team brings decades of sustainability consulting experience. Let&apos;s talk about how Council Fire can support your goals.
         </p>
-        <a
-          href="https://www.councilfire.org/contact"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white text-teal-600 font-semibold px-7 py-3.5 hover:bg-teal-50 transition-colors shadow-md"
-        >
-          Get in Touch
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
+        <div className="mt-8">
+          <a
+            href="https://www.councilfire.org/contact"
+            className="group inline-flex items-center gap-3 font-bold text-white"
+          >
+            Get in Touch
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-teal-600 group-hover:scale-110 transition-all shadow-lg">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );

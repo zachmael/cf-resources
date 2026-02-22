@@ -56,24 +56,30 @@ export default async function GlossaryPage({ params }: Props) {
   return (
     <>
       {/* Hero area */}
-      <section className="bg-gradient-to-b from-brand-50 to-white border-b border-brand-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12">
+      <section className="relative overflow-hidden bg-brand-50 border-b border-brand-100">
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-brand-100 opacity-60" />
+        <div className="absolute -bottom-16 -left-16 w-[200px] h-[200px] rounded-full bg-brand-100 opacity-40" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-14">
           <JsonLd data={schemas} />
           <Breadcrumb items={[{ label: 'Glossary', href: '/glossary' }, { label: meta.title }]} />
-          <div className="flex items-start gap-3 flex-wrap">
-            {meta.category && (
-              <span className="inline-flex items-center rounded-full bg-teal-50 border border-teal-200 px-3 py-1 text-sm font-medium text-teal-700 mt-2">
-                {meta.category as string}
-              </span>
-            )}
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-teal-500" />
+            <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">Definition</span>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-brand-800 mt-3 tracking-tight">
+          {meta.category && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              {meta.category as string}
+            </span>
+          )}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-brand-800 tracking-tight">
             What is {meta.title}?
           </h1>
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
           <article>
             {typeof meta.definition === 'string' && <DefinitionBox>{meta.definition}</DefinitionBox>}

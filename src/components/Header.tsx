@@ -39,12 +39,14 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="https://www.councilfire.org/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-600 transition-all hover:shadow-md"
+              className="group inline-flex items-center gap-3 text-sm font-semibold text-brand-800"
             >
               Contact Us
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:shadow-lg group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
             </a>
           </div>
 
@@ -79,9 +81,12 @@ export default function Header() {
           ))}
           <a
             href="https://www.councilfire.org/contact"
-            className="block mt-3 text-center rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white"
+            className="flex items-center justify-center gap-2 mt-3 rounded-full bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white"
           >
-            Contact Us →
+            Contact Us
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </nav>
       )}
