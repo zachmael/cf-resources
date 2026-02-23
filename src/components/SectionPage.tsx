@@ -6,6 +6,7 @@ import JsonLd from './JsonLd';
 import { breadcrumbSchema, articleSchema, faqSchema } from '@/lib/schema';
 import { type ContentMeta } from '@/lib/content';
 import { type ReactElement } from 'react';
+import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop',
@@ -28,6 +29,9 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const faqs = (meta.faqs as { question: string; answer: string }[]) || [];
   const relatedPages = (meta.relatedPages as string[]) || [];
   const heroImage = sectionHeroImages[section] || defaultSectionHero;
+  const inlineImages = section === 'locations'
+    ? getLocationImages(meta.slug)
+    : [getTopicImage(section, meta.slug)];
 
   const schemas = [
     breadcrumbSchema([
@@ -68,6 +72,23 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
         <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
           <article>
             <div className="prose">{rendered}</div>
+
+            {/* Inline images */}
+            {inlineImages.length > 0 && (
+              <div className={`my-10 ${inlineImages.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : ''}`}>
+                {inlineImages.map((img, i) => (
+                  <figure key={i} className="rounded-2xl overflow-hidden shadow-lg">
+                    <img
+                      src={img}
+                      alt={`${meta.title} — sustainability in practice`}
+                      className="w-full h-64 md:h-72 object-cover"
+                      loading="lazy"
+                    />
+                  </figure>
+                ))}
+              </div>
+            )}
+
             {faqs.length > 0 && <FAQ items={faqs} />}
             <CTA topic={meta.title} />
           </article>
