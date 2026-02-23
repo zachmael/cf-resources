@@ -9,6 +9,7 @@ import JsonLd from '@/components/JsonLd';
 import { renderMDX } from '@/lib/mdx';
 import { getContentBySlug, getContentSlugs } from '@/lib/content';
 import { breadcrumbSchema, definedTermSchema, faqSchema } from '@/lib/schema';
+import { getRelevantCFLinks } from '@/lib/cf-links';
 
 interface Props {
   params: { slug: string };
@@ -67,6 +68,7 @@ export default async function GlossaryPage({ params }: Props) {
   const rendered = await renderMDX(content);
   const heroImage = categoryHeroImages[meta.category as string] || defaultHeroImage;
   const midImage = categoryMidImages[meta.category as string] || defaultMidImage;
+  const cfLinks = getRelevantCFLinks(meta.title, meta.category as string || '');
 
   const schemas = [
     breadcrumbSchema([
@@ -127,6 +129,58 @@ export default async function GlossaryPage({ params }: Props) {
             </figure>
 
             {faqs.length > 0 && <FAQ items={faqs} />}
+
+            {/* Council Fire Resources */}
+            {(cfLinks.blogs.length > 0 || cfLinks.work.length > 0 || cfLinks.services.length > 0) && (
+              <section className="mt-12 rounded-2xl border border-brand-200 bg-brand-50 p-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
+                  <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">From Council Fire</span>
+                </div>
+                <h3 className="text-xl font-bold font-heading text-brand-800 mb-6">Related Resources & Insights</h3>
+
+                {cfLinks.blogs.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Blog & Insights</h4>
+                    <div className="space-y-3">
+                      {cfLinks.blogs.map((post) => (
+                        <a key={post.url} href={post.url} className="group flex items-start gap-3 text-brand-700 hover:text-teal-600 transition-colors">
+                          <svg className="h-5 w-5 mt-0.5 text-teal-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                          <span className="text-sm font-medium group-hover:underline">{post.title}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {cfLinks.work.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Case Studies</h4>
+                    <div className="space-y-3">
+                      {cfLinks.work.map((w) => (
+                        <a key={w.url} href={w.url} className="group flex items-start gap-3 text-brand-700 hover:text-teal-600 transition-colors">
+                          <svg className="h-5 w-5 mt-0.5 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                          <span className="text-sm font-medium group-hover:underline">{w.title}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {cfLinks.services.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">Our Services</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {cfLinks.services.map((s) => (
+                        <a key={s.url} href={s.url} className="inline-flex items-center rounded-full bg-white border border-brand-200 px-4 py-2 text-sm font-medium text-brand-700 hover:border-teal-400 hover:text-teal-600 transition-colors">
+                          {s.title}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
 
             <CTA topic={meta.title} />
           </article>
