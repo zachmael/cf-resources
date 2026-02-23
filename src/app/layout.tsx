@@ -8,17 +8,29 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://resources.councilfire.org'),
   title: {
-    default: 'Council Fire Resources — Sustainability Knowledge Hub',
+    default: 'Sustainability & Climate Resilience Resources | Council Fire',
     template: '%s | Council Fire Resources',
   },
-  description: 'Expert sustainability resources: glossary terms, framework guides, industry insights, and compliance tools from Council Fire.',
+  description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance. Glossary, framework comparisons, and city-level climate data.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'Council Fire Resources',
+    title: 'Sustainability & Climate Resilience Resources | Council Fire',
+    description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance.',
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Sustainability & Climate Resilience Resources | Council Fire',
+    description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG, climate resilience, and environmental compliance.',
   },
   robots: { index: true, follow: true },
 };
