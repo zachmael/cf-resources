@@ -121,7 +121,7 @@ export const guideImageMap: Record<string, string> = {
 
 export const industryImageMap: Record<string, string> = {
   'agriculture':          px(974314),
-  'construction':         px(1105658),
+  'construction':         px(4513940),
   'energy':               px(433308),
   'financial-services':   px(210574),
   'food-and-beverage':    px(2252584),
@@ -161,7 +161,7 @@ export const personaImageMap: Record<string, string> = {
 
 export const compareImageMap: Record<string, string> = {
   'b-corp-vs-benefit-corporation':                        px(8112180),
-  'biodiversity-net-gain-vs-biodiversity-offsets':        px(957024),
+  'biodiversity-net-gain-vs-biodiversity-offsets':        px(339614),
   'carbon-capture-vs-carbon-removal':                     px(2132171),
   'carbon-neutral-vs-net-zero':                           px(35105427),
   'carbon-offsets-vs-carbon-credits':                     px(2800832),
@@ -188,7 +188,7 @@ export const compareImageMap: Record<string, string> = {
   'human-rights-due-diligence-vs-social-audit':           px(6457579),
   'ifrs-s1-vs-ifrs-s2':                                   px(4968391),
   'integrated-reporting-vs-gri':                          px(5673488),
-  'iso-14001-vs-emas':                                    px(7947971),
+  'iso-14001-vs-emas':                                    px(8847133),
   'iso-14001-vs-iso-14064':                               px(4344878),
   'just-transition-vs-green-transition':                  px(2774556),
   'lca-vs-carbon-footprint':                              px(3735218),
@@ -215,7 +215,7 @@ export const topicImages: Record<string, string[]> = {
   'flooding': [px(1446076), px(1739855)],
   'ocean': [px(1001682), px(1295138), px(932638)],
   'renewable-energy': [px(433308), px(356036), px(2800832)],
-  'forest': [px(957024), px(338936)],
+  'forest': [px(339614), px(338936)],
   'agriculture': [px(974314), px(2132171)],
   'business': [px(3184291), px(3184405)],
   'infrastructure': [px(2219024), px(1105766)],
