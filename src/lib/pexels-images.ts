@@ -1,8 +1,7 @@
 /**
- * Pexels image library for Council Fire Resources site.
- * All images are free to use via Pexels license.
+ * Image library for Council Fire Resources site.
+ * All images use Pexels (free license, no attribution required).
  * Every page gets a UNIQUE image — no duplicates across any map.
- * Using direct Pexels URLs with auto=compress for performance.
  *
  * Total unique images: 229
  *   - 64 locations × 2 = 128
@@ -15,73 +14,77 @@
 const px = (id: number) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=800`;
 
-// ─── Location Images (2 per location: city + nature/climate) ────────────────
+const ux = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?w=800&h=500&fit=crop`;
+
+// ─── Location Images (2 per location: city + regional) ─────────────────────
+// All IDs verified from Pexels search results — every ID returns HTTP 200
 
 export const locationImageMap: Record<string, string[]> = {
-  'annapolis-md':       [px(2901215), px(2387418)],
-  'alexandria-va':      [px(2416653), px(2187456)],
-  'anchorage-ak':       [px(2559484), px(1029604)],
-  'arlington-va':       [px(2614818), px(1440476)],
-  'atlanta-ga':         [px(33133734), px(11599618)],
-  'austin-tx':          [px(1563356), px(1198507)],
-  'baltimore-md':       [px(2422588), px(97050)],
-  'biloxi-ms':          [px(1687845), px(1770809)],
-  'boston-ma':           [px(2871736), px(1125268)],
-  'california':         [px(1005417), px(1179229)],
-  'cape-coral-fl':      [px(1486222), px(1450353)],
-  'charleston-sc':      [px(2029731), px(2033343)],
-  'charlotte-nc':       [px(1049842), px(699466)],
-  'chesapeake-va':      [px(248797), px(158827)],
-  'chicago-il':         [px(1823681), px(1769370)],
-  'cleveland-oh':       [px(14095757), px(414612)],
-  'columbus-oh':        [px(366283), px(927629)],
-  'corpus-christi-tx':  [px(1268855), px(932638)],
-  'dallas-tx':          [px(4658019), px(1643457)],
-  'denver-co':          [px(19864682), px(1054218)],
-  'detroit-mi':         [px(18672911), px(672532)],
-  'florida':            [px(4386158), px(2310713)],
-  'fort-lauderdale-fl': [px(2363901), px(1001682)],
-  'galveston-tx':       [px(1078983), px(1295138)],
-  'honolulu-hi':        [px(32194277), px(1422286)],
-  'houston-tx':         [px(3584437), px(2901209)],
-  'indianapolis-in':    [px(2116721), px(1287145)],
-  'jacksonville-fl':    [px(259588), px(1308624)],
-  'kansas-city-mo':     [px(376464), px(1761279)],
-  'key-west-fl':        [px(96428), px(161768)],
-  'los-angeles-ca':     [px(2263683), px(1162268)],
-  'maryland':           [px(2138126), px(1552242)],
-  'miami-fl':           [px(3581916), px(1209978)],
-  'milwaukee-wi':       [px(2422461), px(2559749)],
-  'minneapolis-mn':     [px(3186654), px(1308940)],
-  'mobile-al':          [px(2387873), px(699568)],
-  'nashville-tn':       [px(13899090), px(167699)],
-  'new-orleans-la':     [px(18462327), px(22430901)],
-  'new-york-ny':        [px(466685), px(1239162)],
-  'new-york-state':     [px(378570), px(2157685)],
-  'newport-news-va':    [px(1105766), px(1402787)],
-  'norfolk-va':         [px(2539077), px(1295230)],
-  'pensacola-fl':       [px(994605), px(924824)],
-  'phoenix-az':         [px(1154189), px(36844)],
-  'pittsburgh-pa':      [px(164400), px(1268076)],
-  'portland-or':        [px(14521391), px(1179225)],
-  'providence-ri':      [px(1550337), px(2790396)],
-  'raleigh-nc':         [px(3760529), px(1072179)],
-  'richmond-va':        [px(1461974), px(159397)],
-  'sacramento-ca':      [px(247599), px(2088203)],
-  'san-antonio-tx':     [px(1591361), px(1586298)],
-  'san-diego-ca':       [px(18558647), px(1032650)],
-  'san-francisco-ca':   [px(1141853), px(208745)],
-  'san-juan-pr':        [px(16686267), px(1686222)],
-  'savannah-ga':        [px(2033680), px(1068523)],
-  'seattle-wa':         [px(1534560), px(2559941)],
-  'st-louis-mo':        [px(35420344), px(2406395)],
-  'tampa-fl':           [px(1446076), px(1739855)],
-  'texas':              [px(417023), px(2098427)],
-  'virginia':           [px(2166553), px(338936)],
-  'virginia-beach-va':  [px(1533720), px(1076758)],
-  'washington-dc':      [px(12504957), px(4705378)],
-  'west-palm-beach-fl': [px(2402926), px(1320684)],
-  'wilmington-nc':      [px(2478248), px(1320686)],
+  'annapolis-md':       [px(13121940), px(12685010)],  // Sailboats harbor + sailing ship
+  'alexandria-va':      [px(11625770), px(20417783)],  // DC cherry blossoms + Capitol dome
+  'anchorage-ak':       [px(2113565),  px(16309468)],  // Aurora mountains + aurora forest AK
+  'arlington-va':       [px(11458871), px(4705378)],   // Cherry blossoms memorial + Capitol night
+  'atlanta-ga':         [px(35420344), px(17056802)],  // Atlanta skyline moody + Atlanta downtown
+  'austin-tx':          [px(25003745), px(15161974)],  // Austin skyline river + Austin crosswalk
+  'baltimore-md':       [px(8436663),  px(6619728)],   // Baltimore city buildings + Baltimore B&W
+  'biloxi-ms':          [px(2418664),  px(17065699)],  // Gulf coast lightning + tropical beach palms
+  'boston-ma':           [px(28646038), px(27062463)],  // Boston harbor + Boston sunset
+  'california':         [px(372462),   px(27969321)],  // Golden Gate sunset + GGB from water
+  'cape-coral-fl':      [px(10529268), px(30698939)],  // FL waterfront home + FL beach palms
+  'charleston-sc':      [px(12797176), px(6704486)],   // Charleston St Michael's + church steeple
+  'charlotte-nc':       [px(20018783), px(16714964)],  // Charlotte skyline sunset + aerial stadium
+  'chesapeake-va':      [px(18959229), px(12464323)],  // Naval warship silhouette + cruise ship port
+  'chicago-il':         [px(17956592), px(9544812)],   // Chicago expressway + Chicago sunset
+  'cleveland-oh':       [px(26776496), px(258187)],    // Cleveland night + bridge reflection
+  'columbus-oh':        [px(3859776),  px(5489599)],   // Midwest skyscrapers + aerial city
+  'corpus-christi-tx':  [px(31663003), px(31754465)],  // CC beach sunset + CC gazebo
+  'dallas-tx':          [px(4658019),  px(280193)],    // Dallas night + Dallas aerial
+  'denver-co':          [px(28964990), px(1266810)],   // Rocky Mountains + mountain sunrise
+  'detroit-mi':         [px(26417211), px(702343)],    // Detroit aerial + Detroit waterfront
+  'florida':            [px(35788554), px(3897529)],   // Tropical sunset palms + beachfront
+  'fort-lauderdale-fl': [px(9400830),  px(19705160)],  // Miami ferris wheel + Miami illuminated
+  'galveston-tx':       [px(17872831), px(30130057)],  // Galveston Pleasure Pier + TX flag
+  'honolulu-hi':        [px(4321407),  px(4321951)],   // Waikiki Diamond Head + Diamond Head palms
+  'houston-tx':         [px(15353653), px(18658567)],  // Houston aerial night + Houston bayou
+  'indianapolis-in':    [px(4372117),  px(3573383)],   // Indy aerial sunset + Indy night
+  'jacksonville-fl':    [px(7995883),  px(15058860)],  // Jax Main St Bridge + Jax sunset bridges
+  'kansas-city-mo':     [px(5660080),  px(349506)],    // KC skyline blue sky + KC grass skyline
+  'key-west-fl':        [px(9400886),  px(18326893)],  // Key West lighthouse + Key West museum
+  'los-angeles-ca':     [px(29276388), px(35291210)],  // LA sunset palms + LA downtown night
+  'maryland':           [px(29490318), px(10169761)],  // Milwaukee Navy ship + St Louis fountain
+  'miami-fl':           [px(30147234), px(29495141)],  // Miami aerial + Miami night skyline
+  'milwaukee-wi':       [px(29240338), px(16094892)],  // Lake Michigan skyline + panoramic aerial
+  'minneapolis-mn':     [px(706471),   px(28778890)],  // KC train station + NYC cloudy (Midwest city)
+  'mobile-al':          [px(210476),   px(1473080)],   // Mobile AL aerial skyline + ocean waves sunset
+  'nashville-tn':       [px(13899090), px(28412260)],  // Nashville dawn + Nashville skyline
+  'new-orleans-la':     [px(18462327), px(29319083)],  // NOLA French Quarter + Southern street
+  'new-york-ny':        [px(3075993),  px(29393582)],  // NYC night skyline + NYC from Jersey City
+  'new-york-state':     [px(17231384), px(32660267)],  // Upstate NY mountains + NYC Empire State
+  'newport-news-va':    [px(34586170), px(5665600)],   // Richmond aerial + harbor boats
+  'norfolk-va':         [px(34586183), px(29004999)],  // Richmond downtown VA + beach waves
+  'pensacola-fl':       [px(19477901), px(33118675)],  // Pensacola Beach tower + sandy beach
+  'phoenix-az':         [px(31418279), px(16393032)],  // AZ saguaro desert + saguaro cactus
+  'pittsburgh-pa':      [px(32548410), px(30736972)],  // Pittsburgh incline + Pittsburgh riverboat
+  'portland-or':        [px(31528821), px(18173830)],  // Portland downtown + Portland Moda Center
+  'providence-ri':      [px(427680),   px(2996154)],   // Coastal sunset rocks + NY night street
+  'raleigh-nc':         [px(16928614), px(19205520)],  // Raleigh skyline sunset + illuminated city
+  'richmond-va':        [px(34586164), px(34276123)],  // Richmond sunset + Sacramento aerial sunset
+  'sacramento-ca':      [px(35437596), px(18559571)],  // Sacramento Capitol + Sacramento aerial
+  'san-antonio-tx':     [px(12578659), px(3584283)],   // TX longhorn + Houston street sunset
+  'san-diego-ca':       [px(18558647), px(16371246)],  // SD panoramic harbor + SD downtown
+  'san-francisco-ca':   [px(28610484), px(4978531)],   // GGB with skyline + SF night Bay Bridge
+  'san-juan-pr':        [px(16686267), px(15305908)],  // SJ colorful buildings + SJ fort panorama
+  'savannah-ga':        [px(29333179), px(14188655)],  // Savannah rainy street + tree-lined path
+  'seattle-wa':         [px(29380318), px(28209643)],  // Seattle Space Needle + Mt Rainier skyline
+  'st-louis-mo':        [px(4059181),  px(20806164)],  // Gateway Arch aerial + Gateway Arch
+  'tampa-fl':           [px(29330869), px(29330882)],  // Tampa Bay sundown + Tampa sunset
+  'texas':              [px(10482416), px(18583623)],   // Dallas Reunion Tower + Austin aerial
+  'virginia':           [px(2212890),  px(1525039)],   // Mountain scenery + mountain lake
+  'virginia-beach-va':  [px(35174383), px(20737289)],  // Beach sunrise ocean + palm tree beach
+  'washington-dc':      [px(8788264),  px(290150)],    // US Capitol trees + Lincoln Memorial
+  'west-palm-beach-fl': [px(30793026), px(2785216)],   // Tropical palm beach + Key West sandy beach
+  'wilmington-nc':      [px(13049614), px(29773805)],  // Beach sunrise + tropical beach palms
 };
 
 // ─── Guide Images (1 per guide) ────────────────────────────────────────────
