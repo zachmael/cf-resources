@@ -257,8 +257,8 @@ export function getLocationImages(slug: string): string[] {
 export function getTopicImage(section: string, slug: string): string {
   if (section === 'guides' && guideImageMap[slug]) return guideImageMap[slug];
   if (section === 'industries' && industryImageMap[slug]) return industryImageMap[slug];
-  if (section === 'personas' && personaImageMap[slug]) return personaImageMap[slug];
-  if (section === 'comparisons' && compareImageMap[slug]) return compareImageMap[slug];
+  if ((section === 'personas' || section === 'for') && personaImageMap[slug]) return personaImageMap[slug];
+  if ((section === 'comparisons' || section === 'compare') && compareImageMap[slug]) return compareImageMap[slug];
 
   const s = slug.toLowerCase();
   if (s.includes('ocean') || s.includes('marine') || s.includes('coral'))
