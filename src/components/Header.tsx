@@ -21,7 +21,7 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <a href="https://www.councilfire.org" className="flex items-center gap-2.5 shrink-0">
-            <Image src="/logo-dark.png" alt="Council Fire" width={4769} height={1242} className="h-7 w-auto" priority />
+            <Image src="/logo-dark.png" alt="Council Fire" width={4769} height={1242} className="h-9 w-auto" priority />
           </a>
 
           <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Breadcrumb from './Breadcrumb';
 import { type ContentItem } from '@/lib/content';
+import { getTopicImage, getLocationImages, industryImages } from '@/lib/pexels-images';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=800&fit=crop',
@@ -10,6 +11,16 @@ const sectionHeroImages: Record<string, string> = {
   for: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=800&fit=crop',
 };
 const defaultSectionHero = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=800&fit=crop';
+
+function getCardImage(section: string, slug: string): string {
+  if (section === 'locations') {
+    return getLocationImages(slug)[0];
+  }
+  if (section === 'industries' && industryImages[slug]) {
+    return industryImages[slug];
+  }
+  return getTopicImage(section, slug);
+}
 
 interface Props {
   title: string;
@@ -44,26 +55,55 @@ export default function SectionIndex({ title, description, section, items, bread
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         {items.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {items.map((item, i) => (
-              <Link key={item.meta.slug} href={`/${section}/${item.meta.slug}`}
-                className="group rounded-2xl border border-brand-200 bg-white p-6 hover:border-teal-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
-                style={{ animationDelay: `${i * 0.05}s`, animationFillMode: 'both' }}>
-                <h2 className="font-bold text-brand-800 group-hover:text-teal-600 transition-colors">{item.meta.title}</h2>
-                <p className="text-sm text-brand-500 mt-2 line-clamp-2 leading-relaxed">{item.meta.description}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  {item.meta.category && (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-600 bg-amber-50 rounded-full px-2.5 py-0.5">
-                      <span className="w-1 h-1 rounded-full bg-amber-500" />
-                      {item.meta.category}
-                    </span>
-                  )}
-                  <span className="flex items-center justify-center w-7 h-7 rounded-full bg-brand-50 text-brand-400 group-hover:bg-teal-500 group-hover:text-white transition-all ml-auto">
-                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {items.map((item, i) => {
+              const cardImg = getCardImage(section, item.meta.slug);
+              return (
+                <Link
+                  key={item.meta.slug}
+                  href={`/${section}/${item.meta.slug}`}
+                  className="group relative rounded-2xl overflow-hidden bg-white border border-brand-200 hover:border-teal-400 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
+                  style={{ animationDelay: `${i * 0.04}s`, animationFillMode: 'both' }}
+                >
+                  {/* Card image */}
+                  <div className="relative h-44 overflow-hidden">
+                    <img
+                      src={cardImg}
+                      alt={item.meta.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    {item.meta.category && (
+                      <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 text-xs font-bold text-white bg-teal-500/90 backdrop-blur-sm rounded-full px-3 py-1 uppercase tracking-wide">
+                        <span className="w-1 h-1 rounded-full bg-white/80" />
+                        {item.meta.category}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Card content */}
+                  <div className="p-5">
+                    <h2 className="font-bold text-brand-800 group-hover:text-teal-600 transition-colors leading-snug">
+                      {item.meta.title}
+                    </h2>
+                    <p className="text-sm text-brand-500 mt-2 line-clamp-2 leading-relaxed">
+                      {item.meta.description}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-xs font-semibold text-teal-500 group-hover:text-teal-600 transition-colors uppercase tracking-wide">
+                        Read more
+                      </span>
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 text-brand-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
+                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-24">
