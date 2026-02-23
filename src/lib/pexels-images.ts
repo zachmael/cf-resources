@@ -137,21 +137,21 @@ export const industryImageMap: Record<string, string> = {
 // ─── Persona Images (1 per persona) ────────────────────────────────────────
 
 export const personaImageMap: Record<string, string> = {
-  'board-member':                   px(3184416),
-  'chief-financial-officer':        px(3760072),
-  'chief-operations-officer':       px(3184339),
-  'chief-sustainability-officer':   px(886521),
-  'facilities-manager':             px(2219024),
-  'general-counsel':                px(5668473),
-  'hr-director':                    px(3184352),
-  'investor-relations':             px(1427541),
-  'municipal-climate-officer':      px(8788264),
-  'nonprofit-executive':            px(3184317),
-  'port-director':                  px(269077),
-  'procurement-director':           px(1427105),
-  'real-estate-developer':          px(3760069),
-  'supply-chain-director':          px(1108572),
-  'utility-director':               px(1117210),
+  'board-member':                   px(3861571),   // executive boardroom meeting
+  'chief-financial-officer':        px(6801649),   // financial charts on screen
+  'chief-operations-officer':       px(8973680),   // industrial machinery operations
+  'chief-sustainability-officer':   px(886521),    // nature/sustainability
+  'facilities-manager':             px(2219024),   // building infrastructure
+  'general-counsel':                px(5668882),   // justice scales and gavel
+  'hr-director':                    px(8062287),   // professionals reviewing data
+  'investor-relations':             px(7567236),   // market data candlestick chart
+  'municipal-climate-officer':      px(1550337),   // government building
+  'nonprofit-executive':            px(6647007),   // volunteers community service
+  'port-director':                  px(21241152),  // cargo ship containers port
+  'procurement-director':           px(4487363),   // warehouse pallets logistics
+  'real-estate-developer':          px(6615235),   // architectural blueprints
+  'supply-chain-director':          px(4481256),   // warehouse workers tablet
+  'utility-director':               px(13875374),  // power lines transformers
 };
 
 // ─── Comparison Images (1 per comparison) ──────────────────────────────────
