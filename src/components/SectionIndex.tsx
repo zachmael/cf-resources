@@ -2,6 +2,15 @@ import Link from 'next/link';
 import Breadcrumb from './Breadcrumb';
 import { type ContentItem } from '@/lib/content';
 
+const sectionHeroImages: Record<string, string> = {
+  compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=800&fit=crop',
+  locations: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=800&fit=crop',
+  guides: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1600&h=800&fit=crop',
+  industries: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=800&fit=crop',
+  for: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=800&fit=crop',
+};
+const defaultSectionHero = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=800&fit=crop';
+
 interface Props {
   title: string;
   description: string;
@@ -11,22 +20,25 @@ interface Props {
 }
 
 export default function SectionIndex({ title, description, section, items, breadcrumbLabel }: Props) {
+  const heroImage = sectionHeroImages[section] || defaultSectionHero;
+
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-brand-50 border-b border-brand-100">
-        {/* Decorative shapes */}
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-brand-100 opacity-60" />
-        <div className="absolute -bottom-16 -left-16 w-[250px] h-[250px] rounded-full bg-brand-100 opacity-40" />
+      <section className="relative overflow-hidden min-h-[300px] flex items-end">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
+        </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-14">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-14 w-full">
           <Breadcrumb items={[{ label: breadcrumbLabel }]} />
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
-            <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">{breadcrumbLabel}</span>
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <span className="text-sm font-semibold text-amber-300 uppercase tracking-wider">{breadcrumbLabel}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-brand-800 tracking-tight">{title}</h1>
-          <p className="mt-4 text-lg text-brand-500 max-w-2xl leading-relaxed">{description}</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-white tracking-tight">{title}</h1>
+          <p className="mt-4 text-lg text-white/70 max-w-2xl leading-relaxed">{description}</p>
         </div>
       </section>
 

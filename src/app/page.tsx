@@ -156,26 +156,39 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featured.map((item) => (
+              {featured.map((item, i) => {
+                const thumbs = [
+                  'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=200&fit=crop',
+                  'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
+                  'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=200&fit=crop',
+                  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=200&fit=crop',
+                ];
+                return (
                 <Link
                   key={item.meta.slug}
                   href={`/glossary/${item.meta.slug}`}
-                  className="group rounded-2xl border border-brand-200 bg-white p-8 hover:border-teal-400 hover:shadow-xl transition-all duration-300"
+                  className="group rounded-2xl border border-brand-200 bg-white overflow-hidden hover:border-teal-400 hover:shadow-xl transition-all duration-300"
                 >
-                  {item.meta.category && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                      {item.meta.category}
-                    </span>
-                  )}
-                  <h3 className="text-xl font-bold text-brand-800 group-hover:text-teal-600 transition-colors">{item.meta.title}</h3>
-                  <p className="mt-3 text-brand-500 line-clamp-2 leading-relaxed">{item.meta.description}</p>
-                  <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-teal-500">
-                    Read more
-                    <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <div className="h-36 overflow-hidden">
+                    <img src={thumbs[i % thumbs.length]} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-6">
+                    {item.meta.category && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700 mb-4">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        {item.meta.category}
+                      </span>
+                    )}
+                    <h3 className="text-xl font-bold text-brand-800 group-hover:text-teal-600 transition-colors">{item.meta.title}</h3>
+                    <p className="mt-3 text-brand-500 line-clamp-2 leading-relaxed">{item.meta.description}</p>
+                    <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-teal-500">
+                      Read more
+                      <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </div>
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

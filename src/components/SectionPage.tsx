@@ -7,6 +7,15 @@ import { breadcrumbSchema, articleSchema, faqSchema } from '@/lib/schema';
 import { type ContentMeta } from '@/lib/content';
 import { type ReactElement } from 'react';
 
+const sectionHeroImages: Record<string, string> = {
+  compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop',
+  locations: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=400&fit=crop',
+  guides: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&h=400&fit=crop',
+  industries: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=400&fit=crop',
+  for: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=400&fit=crop',
+};
+const defaultSectionHero = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=400&fit=crop';
+
 interface Props {
   meta: ContentMeta;
   rendered: ReactElement;
@@ -18,6 +27,7 @@ interface Props {
 export default function SectionPage({ meta, rendered, section, sectionLabel, sectionHref }: Props) {
   const faqs = (meta.faqs as { question: string; answer: string }[]) || [];
   const relatedPages = (meta.relatedPages as string[]) || [];
+  const heroImage = sectionHeroImages[section] || defaultSectionHero;
 
   const schemas = [
     breadcrumbSchema([
@@ -32,22 +42,24 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-brand-50 border-b border-brand-100">
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-brand-100 opacity-60" />
-        <div className="absolute -bottom-16 -left-16 w-[200px] h-[200px] rounded-full bg-brand-100 opacity-40" />
+      <section className="relative overflow-hidden min-h-[280px] flex items-end">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
+        </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-14">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 w-full">
           <JsonLd data={schemas} />
           <Breadcrumb items={[{ label: sectionLabel, href: sectionHref }, { label: meta.title }]} />
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
-            <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">{sectionLabel}</span>
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <span className="text-sm font-semibold text-amber-300 uppercase tracking-wider">{sectionLabel}</span>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-brand-800 tracking-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-white tracking-tight">
             {meta.title}
           </h1>
           {meta.description && (
-            <p className="mt-4 text-lg text-brand-500 max-w-2xl leading-relaxed">{meta.description}</p>
+            <p className="mt-4 text-lg text-white/70 max-w-2xl leading-relaxed">{meta.description}</p>
           )}
         </div>
       </section>
