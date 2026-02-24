@@ -4,12 +4,12 @@ import SearchBar from '@/components/SearchBar';
 import { getAllContentForSearch, getAllContent } from '@/lib/content';
 
 const sections = [
-  { title: 'Glossary', href: '/glossary', desc: 'Key sustainability terms explained clearly for professionals.', icon: '📖', count: 'glossary', image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop' },
-  { title: 'Comparisons', href: '/compare', desc: 'Side-by-side breakdowns of frameworks and approaches.', icon: '⚖️', count: 'compare', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop' },
-  { title: 'Locations', href: '/locations', desc: 'Climate risks and regulations by region.', icon: '📍', count: 'locations', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop' },
-  { title: 'Guides', href: '/guides', desc: 'Step-by-step compliance and framework guides.', icon: '📋', count: 'guides', image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop' },
-  { title: 'Industries', href: '/industries', desc: 'Sector-specific sustainability insights.', icon: '🏭', count: 'industries', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop' },
-  { title: 'For You', href: '/for', desc: 'Resources tailored to your role.', icon: '👤', count: 'for', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop' },
+  { title: 'Glossary', href: '/glossary', desc: 'Key sustainability terms explained clearly for professionals.', icon: '📖', count: 'glossary', image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=500&fit=crop' },
+  { title: 'Comparisons', href: '/compare', desc: 'Side-by-side breakdowns of frameworks and approaches.', icon: '⚖️', count: 'compare', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=500&fit=crop' },
+  { title: 'Locations', href: '/locations', desc: 'Climate risks and regulations by region.', icon: '📍', count: 'locations', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop' },
+  { title: 'Guides', href: '/guides', desc: 'Step-by-step compliance and framework guides.', icon: '📋', count: 'guides', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=500&fit=crop' },
+  { title: 'Industries', href: '/industries', desc: 'Sector-specific sustainability insights.', icon: '🏭', count: 'industries', image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=500&fit=crop' },
+  { title: 'For You', href: '/for', desc: 'Resources tailored to your role.', icon: '👤', count: 'for', image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=500&fit=crop' },
 ];
 
 export default function HomePage() {
