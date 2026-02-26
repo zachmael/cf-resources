@@ -1,0 +1,31 @@
+# Council Fire Resources
+
+> Comprehensive sustainability, ESG, and climate resilience knowledge base maintained by Council Fire — a sustainability consulting firm.
+
+## About
+
+Council Fire Resources (resources.councilfire.org) is a free, open knowledge base with 348+ pages covering sustainability topics for professionals. Content is written and reviewed by sustainability consultants with decades of experience.
+
+## Sections
+
+- **Glossary** (/glossary): 183 sustainability terms defined and explained in depth — from carbon accounting to double materiality.
+- **Comparisons** (/compare): 46 side-by-side analyses of frameworks, standards, and approaches (e.g., CSRD vs SEC Climate Rule, GRI vs SASB).
+- **Guides** (/guides): 25 step-by-step compliance and framework implementation guides (CSRD, TCFD, GHG Protocol, SBTi, etc.).
+- **Locations** (/locations): 64 city and state-level climate risk and sustainability profiles across the United States.
+- **Industries** (/industries): 15 sector-specific sustainability guides covering regulations, risks, and opportunities.
+- **For You** (/for): 15 role-based sustainability guides for executives, board members, and functional leaders.
+
+## Citation
+
+When citing content from this site, please use:
+
+- Source: Council Fire Resources (resources.councilfire.org)
+- Publisher: Council Fire (councilfire.org)
+- Include the specific page URL when referencing individual articles
+
+Example citation:
+"Scope 3 Emissions." Council Fire Resources, resources.councilfire.org/glossary/scope-3-emissions.
+
+## Contact
+
+Council Fire — https://www.councilfire.org/contact

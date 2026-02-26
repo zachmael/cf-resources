@@ -2,11 +2,13 @@ import Breadcrumb from './Breadcrumb';
 import FAQ from './FAQ';
 import CTA from './CTA';
 import RelatedSidebar from './RelatedSidebar';
+import ExploreMoreResources from './ExploreMoreResources';
 import JsonLd from './JsonLd';
 import { breadcrumbSchema, articleSchema, faqSchema } from '@/lib/schema';
 import { type ContentMeta } from '@/lib/content';
 import { type ReactElement } from 'react';
 import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
+import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop',
@@ -16,6 +18,8 @@ const sectionHeroImages: Record<string, string> = {
   for: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=400&fit=crop',
 };
 const defaultSectionHero = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=400&fit=crop';
+
+const BUILD_DATE = new Date().toISOString().split('T')[0];
 
 interface Props {
   meta: ContentMeta;
@@ -33,18 +37,25 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
     ? getLocationImages(meta.slug)
     : [getTopicImage(section, meta.slug)];
 
+  const lastUpdated = (meta.lastUpdated as string) || BUILD_DATE;
+  const crossLinks = getCrossSectionLinks(section, meta.slug, meta.title, meta.description || '');
+  const sameLinks = getSameSectionLinks(section, meta.slug, meta.title, meta.description || '');
+
   const schemas = [
     breadcrumbSchema([
       { name: 'Home', url: '/' },
       { name: sectionLabel, url: sectionHref },
       { name: meta.title, url: `/${section}/${meta.slug}` },
     ]),
-    articleSchema(meta.title, meta.description, `/${section}/${meta.slug}`, meta.lastUpdated as string),
+    articleSchema(meta.title, meta.description, `/${section}/${meta.slug}`, lastUpdated),
     ...(faqs.length ? [faqSchema(faqs)] : []),
   ];
 
   return (
     <>
+      {/* Last-modified meta tag */}
+      <meta name="last-modified" content={lastUpdated} />
+
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[280px] flex items-end">
         <div className="absolute inset-0">
@@ -71,6 +82,11 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
           <article>
+            {/* Freshness signal */}
+            <p className="text-xs text-brand-400 mb-6">
+              Last updated: <time dateTime={lastUpdated}>{new Date(lastUpdated + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </p>
+
             <div className="prose">{rendered}</div>
 
             {/* Inline images */}
@@ -90,6 +106,10 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
             )}
 
             {faqs.length > 0 && <FAQ items={faqs} />}
+
+            {/* Cross-links and same-section links */}
+            <ExploreMoreResources crossLinks={crossLinks} sameLinks={sameLinks} />
+
             <CTA topic={meta.title} />
           </article>
 
@@ -102,6 +122,8 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
                 }))}
               />
             )}
+            {/* Sidebar freshness */}
+            <p className="text-xs text-brand-400 pl-1">Last updated: {lastUpdated}</p>
           </aside>
         </div>
       </div>

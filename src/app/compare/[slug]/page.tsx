@@ -13,10 +13,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getContentBySlug('compare', params.slug);
   if (!item) return {};
+  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0];
   return {
     title: item.meta.title,
     description: item.meta.description,
     alternates: { canonical: `/compare/${params.slug}` },
+    other: { 'last-modified': lu },
   };
 }
 

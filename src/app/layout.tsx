@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
 import { organizationSchema } from '@/lib/schema';
 import './globals.css';
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ExitIntentPopup />
       </body>
     </html>
   );

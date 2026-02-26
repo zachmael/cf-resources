@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getContentBySlug('guides', params.slug);
   if (!item) return {};
-  return { title: item.meta.title, description: item.meta.description, alternates: { canonical: `/guides/${params.slug}` } };
+  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0]; return { title: item.meta.title, description: item.meta.description, alternates: { canonical: `/guides/${params.slug}` }, other: { 'last-modified': lu } };
 }
 
 export default async function GuidePage({ params }: Props) {

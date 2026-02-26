@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import HeaderSearch from './HeaderSearch';
 
 const navItems = [
   { label: 'Glossary', href: '/glossary' },
@@ -37,6 +38,7 @@ export default function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
+            <HeaderSearch />
             <a
               href="https://www.councilfire.org/contact"
               className="group inline-flex items-center gap-3 text-sm font-semibold text-brand-800"

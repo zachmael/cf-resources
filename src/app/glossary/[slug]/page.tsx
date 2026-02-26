@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Breadcrumb from '@/components/Breadcrumb';
 import DefinitionBox from '@/components/DefinitionBox';
 import RelatedSidebar from '@/components/RelatedSidebar';
+import ExploreMoreResources from '@/components/ExploreMoreResources';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import JsonLd from '@/components/JsonLd';
@@ -10,10 +11,13 @@ import { renderMDX } from '@/lib/mdx';
 import { getContentBySlug, getContentSlugs } from '@/lib/content';
 import { breadcrumbSchema, definedTermSchema, faqSchema } from '@/lib/schema';
 import { getRelevantCFLinks } from '@/lib/cf-links';
+import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
 
 interface Props {
   params: { slug: string };
 }
+
+const BUILD_DATE = new Date().toISOString().split('T')[0];
 
 export async function generateStaticParams() {
   return getContentSlugs('glossary').map((slug) => ({ slug }));
@@ -22,6 +26,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getContentBySlug('glossary', params.slug);
   if (!item) return {};
+  const lastUpdated = (item.meta.lastUpdated as string) || BUILD_DATE;
   return {
     title: `What is ${item.meta.title}?`,
     description: item.meta.description,
@@ -30,8 +35,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: item.meta.description,
       url: `/glossary/${params.slug}`,
       type: 'article',
+      modifiedTime: lastUpdated,
     },
     alternates: { canonical: `/glossary/${params.slug}` },
+    other: { 'last-modified': lastUpdated },
   };
 }
 
@@ -69,6 +76,9 @@ export default async function GlossaryPage({ params }: Props) {
   const heroImage = categoryHeroImages[meta.category as string] || defaultHeroImage;
   const midImage = categoryMidImages[meta.category as string] || defaultMidImage;
   const cfLinks = getRelevantCFLinks(meta.title, meta.category as string || '');
+  const lastUpdated = (meta.lastUpdated as string) || BUILD_DATE;
+  const crossLinks = getCrossSectionLinks('glossary', meta.slug, meta.title, meta.description || '');
+  const sameLinks = getSameSectionLinks('glossary', meta.slug, meta.title, meta.description || '');
 
   const schemas = [
     breadcrumbSchema([
@@ -82,6 +92,8 @@ export default async function GlossaryPage({ params }: Props) {
 
   return (
     <>
+      <meta name="last-modified" content={lastUpdated} />
+
       {/* Hero area */}
       <section className="relative overflow-hidden min-h-[280px] flex items-end">
         <div className="absolute inset-0">
@@ -111,6 +123,11 @@ export default async function GlossaryPage({ params }: Props) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
           <article>
+            {/* Freshness signal */}
+            <p className="text-xs text-brand-400 mb-6">
+              Last updated: <time dateTime={lastUpdated}>{new Date(lastUpdated + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </p>
+
             {typeof meta.definition === 'string' && <DefinitionBox>{meta.definition}</DefinitionBox>}
 
             <div className="prose mt-8">{rendered}</div>
@@ -182,6 +199,9 @@ export default async function GlossaryPage({ params }: Props) {
               </section>
             )}
 
+            {/* Cross-links and same-section links */}
+            <ExploreMoreResources crossLinks={crossLinks} sameLinks={sameLinks} />
+
             <CTA topic={meta.title} />
           </article>
 
@@ -195,9 +215,7 @@ export default async function GlossaryPage({ params }: Props) {
                 }))}
               />
             )}
-            {meta.lastUpdated && (
-              <p className="text-xs text-brand-400 pl-1">Last updated: {meta.lastUpdated as string}</p>
-            )}
+            <p className="text-xs text-brand-400 pl-1">Last updated: {lastUpdated}</p>
           </aside>
         </div>
       </div>
