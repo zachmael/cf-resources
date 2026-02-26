@@ -76,36 +76,23 @@ export default function ExitIntentPopup() {
             <span className="text-xs font-bold text-[#258193] uppercase tracking-wider">Before you go</span>
           </div>
           <h2 className="text-xl font-extrabold text-gray-900 dark:text-white leading-tight">
-            Get Council Fire&apos;s sustainability intel
+            Need help with sustainability strategy?
           </h2>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-            Expert insights on ESG, climate resilience, and sustainability strategy — delivered to your inbox.
+            Council Fire brings decades of experience in ESG reporting, climate resilience, and sustainability consulting. Let&apos;s talk about how we can help.
           </p>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setShow(false);
-            }}
-            className="mt-5 flex gap-2"
-          >
-            <input
-              type="email"
-              required
-              placeholder="your@email.com"
-              className="flex-1 rounded-full border border-gray-200 px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#258193] focus:border-[#258193]"
-            />
-            <button
-              type="submit"
-              className="shrink-0 rounded-full bg-[#258193] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#1e6b7a] transition-colors"
+          <div className="mt-5">
+            <a
+              href="https://www.councilfire.org/contact"
+              className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-[#258193] px-5 py-3 text-sm font-bold text-white hover:bg-[#1e6b7a] transition-colors"
             >
-              Subscribe
-            </button>
-          </form>
-
-          <p className="mt-3 text-[11px] text-gray-400 text-center">
-            No spam. Unsubscribe anytime.
-          </p>
+              Talk to Our Team
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
