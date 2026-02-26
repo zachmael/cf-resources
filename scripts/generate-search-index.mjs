@@ -7,7 +7,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const contentDir = path.join(process.cwd(), 'content');
-const sections = ['glossary', 'compare', 'locations', 'guides', 'industries', 'for'];
+const sections = ['glossary', 'compare', 'locations', 'guides', 'industries', 'for', 'how-to', 'regulations'];
 const items = [];
 
 for (const section of sections) {

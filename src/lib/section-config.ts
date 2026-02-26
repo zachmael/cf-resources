@@ -37,4 +37,16 @@ export const sections: Record<string, SectionConfig> = {
     singular: 'Industry',
     description: 'Industry-specific sustainability challenges, regulations, and opportunities.',
   },
+  'how-to': {
+    key: 'how-to',
+    title: 'How To',
+    singular: 'How To',
+    description: 'Practical, step-by-step guides for sustainability professionals — from reporting and target-setting to strategy development.',
+  },
+  regulations: {
+    key: 'regulations',
+    title: 'Regulations',
+    singular: 'Regulation',
+    description: 'Expert guides to sustainability regulations worldwide — requirements, timelines, compliance steps, and penalties.',
+  },
 };

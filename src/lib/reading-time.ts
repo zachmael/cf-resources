@@ -1,13 +1,13 @@
-const WPM = 200;
-
-/** Estimate reading time in minutes from raw text/markdown content */
-export function estimateReadingTime(content: string): number {
+/**
+ * Calculate reading time for content.
+ * ~200 words per minute for technical content.
+ */
+export function calculateReadingTime(content: string): number {
   const text = content
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/^---[\s\S]*?---/m, '')
-    .replace(/<[^>]+>/g, '')
-    .replace(/[#*_\[\]()>`~|]/g, '')
+    .replace(/---[\s\S]*?---/, '') // Remove frontmatter
+    .replace(/[#*_\[\]()>`|]/g, '') // Remove markdown syntax
+    .replace(/\n+/g, ' ')
     .trim();
   const words = text.split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.round(words / WPM));
+  return Math.max(1, Math.ceil(words / 200));
 }

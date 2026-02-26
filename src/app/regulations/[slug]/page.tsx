@@ -13,12 +13,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getContentBySlug('regulations', params.slug);
   if (!item) return {};
-  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0]; return { title: item.meta.title, description: item.meta.description, alternates: { canonical: `/regulations/${params.slug}` }, other: { 'last-modified': lu } };
+  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0];
+  return {
+    title: item.meta.title,
+    description: item.meta.description,
+    alternates: { canonical: `/regulations/${params.slug}` },
+    other: { 'last-modified': lu },
+  };
 }
 
 export default async function RegulationPage({ params }: Props) {
   const item = getContentBySlug('regulations', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="regulations" sectionLabel="Regulations" sectionHref="/regulations" />;
+  return <SectionPage meta={item.meta} rendered={rendered} section="regulations" sectionLabel="Regulations" sectionHref="/regulations" />;
 }

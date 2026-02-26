@@ -3,10 +3,11 @@ import SectionIndex from '@/components/SectionIndex';
 import { getAllContent } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Sustainability Regulations & Mandates',
-  description: 'Detailed breakdowns of key sustainability regulations, disclosure mandates, and compliance requirements worldwide.',
+  title: 'Sustainability Regulations & Compliance Guides',
+  description: 'Expert guides to sustainability regulations worldwide — CSRD, SEC climate rule, EU Taxonomy, and more. Requirements, timelines, and compliance steps.',
+  alternates: { canonical: '/regulations' },
 };
 
 export default function RegulationsIndex() {
-  return <SectionIndex title="Regulations & Mandates" description="Detailed breakdowns of sustainability regulations, disclosure mandates, and compliance requirements affecting businesses worldwide." section="regulations" items={getAllContent('regulations')} breadcrumbLabel="Regulations" />;
+  return <SectionIndex title="Regulations" description="Expert guides to sustainability regulations worldwide — requirements, timelines, compliance steps, and penalties." section="regulations" items={getAllContent('regulations')} breadcrumbLabel="Regulations" />;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DarkModeToggle() {
   const [dark, setDark] = useState(false);
@@ -9,25 +9,30 @@ export default function DarkModeToggle() {
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem('cf-dark-mode');
-    const isDark = stored !== null ? stored === '1' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDark(isDark);
-    document.documentElement.classList.toggle('dark', isDark);
+    if (stored === 'true') {
+      setDark(true);
+      document.documentElement.classList.add('dark');
+    } else if (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDark(true);
+      document.documentElement.classList.add('dark');
+    }
   }, []);
 
   const toggle = () => {
     const next = !dark;
     setDark(next);
-    localStorage.setItem('cf-dark-mode', next ? '1' : '0');
+    localStorage.setItem('cf-dark-mode', String(next));
     document.documentElement.classList.toggle('dark', next);
   };
 
-  if (!mounted) return <div className="w-9 h-9" />;
+  if (!mounted) return <div className="w-10 h-10" />;
 
   return (
     <button
       onClick={toggle}
-      className="p-2 rounded-lg text-brand-600 dark:text-gray-300 hover:bg-brand-50 dark:hover:bg-white/10 transition-colors"
+      className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-700 text-brand-600 dark:text-amber-300 hover:bg-brand-200 dark:hover:bg-brand-600 transition-all"
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={dark ? 'Light mode' : 'Dark mode'}
     >
       {dark ? (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
