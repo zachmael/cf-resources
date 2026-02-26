@@ -26,5 +26,5 @@ export default async function RegulationPage({ params }: Props) {
   const item = getContentBySlug('regulations', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} section="regulations" sectionLabel="Regulations" sectionHref="/regulations" />;
+  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="regulations" sectionLabel="Regulations" sectionHref="/regulations" />;
 }

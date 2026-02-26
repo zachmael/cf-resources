@@ -2,7 +2,7 @@
  * Calculate reading time for content.
  * ~200 words per minute for technical content.
  */
-export function calculateReadingTime(content: string): number {
+export function estimateReadingTime(content: string): number {
   const text = content
     .replace(/---[\s\S]*?---/, '') // Remove frontmatter
     .replace(/[#*_\[\]()>`|]/g, '') // Remove markdown syntax
