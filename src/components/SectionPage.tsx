@@ -141,14 +141,12 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
           </article>
 
           <aside className="mt-10 lg:mt-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
-            {relatedPages.length > 0 && (
-              <RelatedSidebar
-                items={relatedPages.map((p) => ({
-                  title: p,
-                  href: `/${section}/${p.toLowerCase().replace(/[\s()]+/g, '-')}`,
-                }))}
-              />
-            )}
+            <RelatedSidebar
+              items={relatedPages.map((p) => ({
+                title: p,
+                href: `/${section}/${p.toLowerCase().replace(/[\s()]+/g, '-')}`,
+              }))}
+            />
             {/* Sidebar freshness */}
             <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
           </aside>
