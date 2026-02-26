@@ -117,6 +117,26 @@ export const guideImageMap: Record<string, string> = {
   'tnfd-reporting-guide':                   px(1598073),
 };
 
+// ─── How-To Images (1 per how-to guide) ────────────────────────────────────
+
+export const howToImageMap: Record<string, string> = {
+  'how-to-write-a-sustainability-report':               px(590022),    // documents on desk
+  'how-to-measure-scope-3-emissions':                   px(3483098),   // industrial smokestacks
+  'how-to-conduct-a-materiality-assessment':            px(7688460),   // data analysis meeting
+  'how-to-set-science-based-targets':                   px(2559941),   // target/bullseye concept
+  'how-to-create-a-climate-action-plan':                px(1198507),   // climate/weather
+  'how-to-implement-esg-reporting':                     px(6801647),   // charts and reporting
+  'how-to-calculate-carbon-footprint':                  px(3912481),   // calculator and documents
+  'how-to-develop-a-net-zero-strategy':                 px(414837),    // wind turbines
+  'how-to-build-a-stakeholder-engagement-plan':         px(3184339),   // business meeting
+  'how-to-conduct-a-climate-risk-assessment':           px(1446076),   // flooding/storm
+  'how-to-write-a-csrd-compliant-report':               px(5668473),   // EU compliance
+  'how-to-integrate-biodiversity-into-business-strategy': px(1640777), // nature biodiversity
+  'how-to-create-a-circular-economy-strategy':          px(802221),    // recycling circular
+  'how-to-develop-sustainable-supply-chain-policies':   px(4481258),   // warehouse logistics
+  'how-to-build-community-climate-resilience':          px(2774556),   // community gathering
+};
+
 // ─── Industry Images (1 per industry) ──────────────────────────────────────
 
 export const industryImageMap: Record<string, string> = {
@@ -279,6 +299,7 @@ export function getLocationImages(slug: string): string[] {
  */
 export function getTopicImage(section: string, slug: string): string {
   if (section === 'regulations' && regulationImageMap[slug]) return regulationImageMap[slug];
+  if (section === 'how-to' && howToImageMap[slug]) return howToImageMap[slug];
   if (section === 'guides' && guideImageMap[slug]) return guideImageMap[slug];
   if (section === 'industries' && industryImageMap[slug]) return industryImageMap[slug];
   if ((section === 'personas' || section === 'for') && personaImageMap[slug]) return personaImageMap[slug];

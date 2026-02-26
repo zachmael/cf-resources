@@ -11,6 +11,7 @@ const navItems = [
   { label: 'Compare', href: '/compare' },
   { label: 'Locations', href: '/locations' },
   { label: 'Guides', href: '/guides' },
+  { label: 'How-To', href: '/how-to' },
   { label: 'Industries', href: '/industries' },
   { label: 'Regulations', href: '/regulations' },
   { label: 'For You', href: '/for' },
