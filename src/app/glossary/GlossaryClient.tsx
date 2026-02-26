@@ -26,7 +26,7 @@ export default function GlossaryClient({ items }: { items: GlossaryItem[] }) {
   const letters = Object.keys(grouped).sort();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white dark:bg-[#111]">
       {/* Category Filters */}
       {categories.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8">

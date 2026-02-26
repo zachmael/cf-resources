@@ -56,7 +56,7 @@ export default function SectionIndex({ title, description, section, items, bread
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 bg-white dark:bg-[#111]">
         {items.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item, i) => {
@@ -97,7 +97,7 @@ export default function SectionIndex({ title, description, section, items, bread
                       <span className="text-xs font-semibold text-teal-500 group-hover:text-teal-600 transition-colors uppercase tracking-wide">
                         {item.content ? `${estimateReadingTime(item.content)} min read` : 'Read more'}
                       </span>
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 text-brand-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 dark:bg-white/10 text-brand-400 dark:text-gray-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
                         <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
@@ -110,12 +110,12 @@ export default function SectionIndex({ title, description, section, items, bread
           </div>
         ) : (
           <div className="text-center py-24">
-            <div className="w-20 h-20 rounded-full bg-brand-50 flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 rounded-full bg-brand-50 dark:bg-white/10 flex items-center justify-center mx-auto mb-6">
               <span className="text-4xl">🚧</span>
             </div>
-            <h2 className="text-3xl font-extrabold font-heading text-brand-800">Coming Soon</h2>
-            <p className="mt-3 text-brand-500 max-w-md mx-auto text-lg">We&apos;re building this section. Check back soon for expert-curated content.</p>
-            <Link href="/" className="mt-8 group inline-flex items-center gap-3 text-sm font-semibold text-brand-800">
+            <h2 className="text-3xl font-extrabold font-heading text-brand-800 dark:text-white">Coming Soon</h2>
+            <p className="mt-3 text-brand-500 dark:text-gray-400 max-w-md mx-auto text-lg">We&apos;re building this section. Check back soon for expert-curated content.</p>
+            <Link href="/" className="mt-8 group inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200">
               Back to Home
               <span className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all">
                 <svg className="h-3.5 w-3.5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

@@ -1,3 +1,40 @@
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Build a map of URL path → lastUpdated date from content frontmatter.
+ */
+function buildLastModMap() {
+  const contentDir = path.join(__dirname, 'content');
+  const map = {};
+
+  if (!fs.existsSync(contentDir)) return map;
+
+  const sections = fs.readdirSync(contentDir, { withFileTypes: true });
+  for (const section of sections) {
+    if (!section.isDirectory()) continue;
+    const sectionPath = path.join(contentDir, section.name);
+    const files = fs.readdirSync(sectionPath);
+    for (const file of files) {
+      if (!file.endsWith('.mdx') && !file.endsWith('.md')) continue;
+      const slug = file.replace(/\.mdx?$/, '');
+      const urlPath = `/${section.name}/${slug}`;
+      try {
+        const raw = fs.readFileSync(path.join(sectionPath, file), 'utf8');
+        const match = raw.match(/lastUpdated:\s*["']?(\d{4}-\d{2}-\d{2})["']?/);
+        if (match) {
+          map[urlPath] = match[1];
+        }
+      } catch { /* skip */ }
+    }
+  }
+  return map;
+}
+
+const lastModMap = buildLastModMap();
+
+const INDEX_PAGES = ['/glossary', '/guides', '/how-to', '/regulations', '/compare', '/locations', '/industries', '/for'];
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://resources.councilfire.org',
@@ -5,42 +42,35 @@ module.exports = {
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
   },
-  changefreq: 'weekly',
-  priority: 0.7,
-  transform: async (config, path) => {
-    // Set priority by content type
-    let priority = 0.7;
-    let changefreq = 'weekly';
+  transform: async (config, urlPath) => {
+    let priority = 0.6;
+    let changefreq = 'monthly';
 
-    if (path === '/') {
+    if (urlPath === '/') {
       priority = 1.0;
-      changefreq = 'daily';
-    } else if (path.startsWith('/guides/') || path.startsWith('/how-to/')) {
+      changefreq = 'weekly';
+    } else if (INDEX_PAGES.includes(urlPath)) {
       priority = 0.8;
-    } else if (path.startsWith('/regulations/')) {
-      priority = 0.8;
-    } else if (path.startsWith('/glossary/')) {
+      changefreq = 'weekly';
+    } else if (urlPath.startsWith('/locations/')) {
+      priority = 0.5;
+      changefreq = 'monthly';
+    } else {
+      // Individual content pages
       priority = 0.6;
-    } else if (path.startsWith('/compare/')) {
-      priority = 0.7;
-    } else if (path.startsWith('/locations/')) {
-      priority = 0.6;
-    } else if (path.startsWith('/industries/')) {
-      priority = 0.7;
-    } else if (path.startsWith('/for/')) {
-      priority = 0.6;
+      changefreq = 'monthly';
     }
 
-    // Index pages
-    if (['/glossary', '/guides', '/how-to', '/regulations', '/compare', '/locations', '/industries', '/for'].includes(path)) {
-      priority = 0.9;
-    }
+    // Use frontmatter lastUpdated if available, otherwise a recent default
+    const lastmod = lastModMap[urlPath]
+      ? new Date(lastModMap[urlPath]).toISOString()
+      : new Date('2026-02-23').toISOString();
 
     return {
-      loc: path,
+      loc: urlPath,
       changefreq,
       priority,
-      lastmod: new Date().toISOString(),
+      lastmod,
     };
   },
 };
