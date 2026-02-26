@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Breadcrumb from './Breadcrumb';
 import FAQ from './FAQ';
 import CTA from './CTA';
+import InlineCTA from './InlineCTA';
 import RelatedSidebar from './RelatedSidebar';
 import ExploreMoreResources from './ExploreMoreResources';
 import JsonLd from './JsonLd';
@@ -39,7 +40,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const readingTime = rawContent ? estimateReadingTime(rawContent) : null;
   const faqs = (meta.faqs as { question: string; answer: string }[]) || [];
   const relatedPages = (meta.relatedPages as string[]) || [];
-  const heroImage = sectionHeroImages[section] || defaultSectionHero;
+  const heroImage = getTopicImage(section, meta.slug) || sectionHeroImages[section] || defaultSectionHero;
   const inlineImages = section === 'locations'
     ? getLocationImages(meta.slug)
     : [getTopicImage(section, meta.slug)];
@@ -116,6 +117,9 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
             </p>
 
             <div className="prose">{rendered}</div>
+
+            {/* Inline CTA mid-article */}
+            <InlineCTA topic={meta.title} />
 
             {/* Inline images */}
             {inlineImages.length > 0 && (
