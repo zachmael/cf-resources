@@ -1,11 +1,14 @@
+import Image from 'next/image';
+
 export default function CTA({ topic }: { topic: string }) {
   return (
     <section className="mt-16 relative overflow-hidden rounded-2xl">
       <div className="absolute inset-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1518173946687-a4c52f2e0c80?w=1200&h=400&fit=crop"
           alt=""
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-teal-800/85" />
       </div>

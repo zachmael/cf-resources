@@ -32,10 +32,12 @@ export default function HomePage() {
       <section className="relative overflow-hidden min-h-[600px] flex items-center">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=800&fit=crop"
             alt=""
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/75 to-brand-900/50" />
         </div>
@@ -105,11 +107,12 @@ export default function HomePage() {
                 style={{ animationDelay: `${i * 0.08}s`, animationFillMode: 'both' }}
               >
                 {/* Card image */}
-                <div className="h-40 overflow-hidden">
-                  <img
+                <div className="relative h-40 overflow-hidden">
+                  <Image
                     src={s.image}
                     alt=""
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm text-xl shadow-sm">
@@ -171,8 +174,8 @@ export default function HomePage() {
                   href={`/glossary/${item.meta.slug}`}
                   className="group rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] overflow-hidden hover:border-teal-400 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="h-36 overflow-hidden">
-                    <img src={thumbs[i % thumbs.length]} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="relative h-36 overflow-hidden">
+                    <Image src={thumbs[i % thumbs.length]} alt="" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6">
                     {item.meta.category && (
@@ -199,10 +202,11 @@ export default function HomePage() {
       {/* Bottom CTA */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1518173946687-a4c52f2e0c80?w=1200&h=400&fit=crop"
             alt=""
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-teal-800/85" />
         </div>

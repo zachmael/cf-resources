@@ -62,7 +62,7 @@ export default function ExitIntentPopup() {
 
         <button
           onClick={() => setShow(false)}
-          className="absolute top-4 right-4 p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
+          className="absolute top-4 right-4 p-1 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-all"
           aria-label="Close"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -76,6 +76,7 @@ export default function ExitIntentPopup() {
             <span className="text-xs font-bold text-[#258193] uppercase tracking-wider">Before you go</span>
           </div>
           <h2 className="text-xl font-extrabold text-gray-900 dark:text-white leading-tight">
+
             Need help with sustainability strategy?
           </h2>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getAllContent } from '@/lib/content';
 import GlossaryClient from './GlossaryClient';
@@ -22,7 +23,7 @@ export default function GlossaryIndex() {
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[300px] flex items-end">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1600&h=800&fit=crop" alt="" className="w-full h-full object-cover" />
+          <Image src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1600&h=800&fit=crop" alt="" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
         </div>
 

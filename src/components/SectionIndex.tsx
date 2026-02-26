@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Breadcrumb from './Breadcrumb';
 import { type ContentItem } from '@/lib/content';
 import { getTopicImage, getLocationImages, industryImages } from '@/lib/pexels-images';
@@ -41,7 +42,7 @@ export default function SectionIndex({ title, description, section, items, bread
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[300px] flex items-end">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <Image src={heroImage} alt="" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
         </div>
 
@@ -70,11 +71,11 @@ export default function SectionIndex({ title, description, section, items, bread
                 >
                   {/* Card image */}
                   <div className="relative h-44 overflow-hidden">
-                    <img
+                    <Image
                       src={cardImg}
                       alt={item.meta.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     {item.meta.category && (

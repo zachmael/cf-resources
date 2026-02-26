@@ -97,7 +97,7 @@ export default function HeaderSearch() {
             setExpanded(true);
             setTimeout(() => inputRef.current?.focus(), 100);
           }}
-          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-brand-500 hover:text-brand-700 hover:bg-brand-50 transition-all"
+          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-brand-500 dark:text-gray-400 hover:text-brand-700 dark:hover:text-white hover:bg-brand-50 dark:hover:bg-white/10 transition-all"
           aria-label="Search"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -117,25 +117,25 @@ export default function HeaderSearch() {
               value={query}
               onChange={e => search(e.target.value)}
               placeholder="Search resources…"
-              className="w-full rounded-lg border border-brand-200 bg-white pl-9 pr-3 py-2 text-sm text-brand-800 placeholder:text-brand-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="w-full rounded-lg border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] pl-9 pr-3 py-2 text-sm text-brand-800 dark:text-white placeholder:text-brand-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
           {results.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 rounded-xl border border-brand-200 bg-white shadow-xl z-50 overflow-hidden max-h-96 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 mt-1 rounded-xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] shadow-xl z-50 overflow-hidden max-h-96 overflow-y-auto">
               {results.map(item => (
                 <Link
                   key={`${item.section}-${item.slug}`}
                   href={`/${item.section}/${item.slug}`}
                   onClick={() => { setExpanded(false); setQuery(''); setResults([]); }}
-                  className="flex items-center gap-2 px-4 py-3 hover:bg-brand-50 border-b border-brand-100 last:border-0 transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 hover:bg-brand-50 dark:hover:bg-white/5 border-b border-brand-100 dark:border-white/10 last:border-0 transition-colors"
                 >
                   <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${sectionColors[item.section] || 'bg-gray-100 text-gray-600'}`}>
                     {sectionLabels[item.section] || item.section}
                   </span>
                   <div className="min-w-0">
-                    <div className="text-sm font-medium text-brand-800 truncate">{item.title}</div>
+                    <div className="text-sm font-medium text-brand-800 dark:text-white truncate">{item.title}</div>
                     {item.description && (
-                      <div className="text-xs text-brand-500 truncate">{item.description}</div>
+                      <div className="text-xs text-brand-500 dark:text-gray-400 truncate">{item.description}</div>
                     )}
                   </div>
                 </Link>
@@ -143,7 +143,7 @@ export default function HeaderSearch() {
             </div>
           )}
           {query && results.length === 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 rounded-xl border border-brand-200 bg-white shadow-xl z-50 p-4 text-sm text-brand-500 text-center">
+            <div className="absolute top-full left-0 right-0 mt-1 rounded-xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] shadow-xl z-50 p-4 text-sm text-brand-500 dark:text-gray-400 text-center">
               No results found
             </div>
           )}

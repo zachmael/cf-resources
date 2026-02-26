@@ -52,23 +52,23 @@ export default function SearchBar({ items }: { items: SearchItem[] }) {
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search all resources…"
-          className="w-full rounded-full border border-brand-200 bg-white pl-12 pr-5 py-3.5 text-base text-brand-800 placeholder:text-brand-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 shadow-sm"
+          className="w-full rounded-full border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] pl-12 pr-5 py-3.5 text-base text-brand-800 dark:text-white placeholder:text-brand-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 shadow-sm"
           aria-label="Search resources"
         />
       </div>
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl border border-brand-200 bg-white shadow-xl z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] shadow-xl z-50 overflow-hidden">
           {results.map((item) => (
             <Link
               key={`${item.section}-${item.slug}`}
               href={`/${item.section}/${item.slug}`}
               onClick={() => { setOpen(false); setQuery(''); }}
-              className="block px-5 py-3.5 hover:bg-brand-50 border-b border-brand-100 last:border-0 transition-colors"
+              className="block px-5 py-3.5 hover:bg-brand-50 dark:hover:bg-white/5 border-b border-brand-100 dark:border-white/10 last:border-0 transition-colors"
             >
-              <span className="text-sm font-medium text-brand-800">{item.title}</span>
+              <span className="text-sm font-medium text-brand-800 dark:text-white">{item.title}</span>
               <span className="ml-2 text-xs font-medium text-teal-500 capitalize">{item.section}</span>
               {item.description && (
-                <p className="text-xs text-brand-500 mt-0.5 line-clamp-1">{item.description}</p>
+                <p className="text-xs text-brand-500 dark:text-gray-400 mt-0.5 line-clamp-1">{item.description}</p>
               )}
             </Link>
           ))}

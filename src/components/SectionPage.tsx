@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Breadcrumb from './Breadcrumb';
 import FAQ from './FAQ';
 import CTA from './CTA';
@@ -85,7 +86,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[280px] flex items-end">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <Image src={heroImage} alt="" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
         </div>
 
@@ -121,12 +122,14 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               <div className={`my-10 ${inlineImages.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : ''}`}>
                 {inlineImages.map((img, i) => (
                   <figure key={i} className="rounded-2xl overflow-hidden shadow-lg">
-                    <img
-                      src={img}
-                      alt={`${meta.title} — sustainability in practice`}
-                      className="w-full h-64 md:h-72 object-cover"
-                      loading="lazy"
-                    />
+                    <div className="relative h-64 md:h-72">
+                      <Image
+                        src={img}
+                        alt={`${meta.title} — sustainability in practice`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </figure>
                 ))}
               </div>
