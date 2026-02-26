@@ -20,5 +20,5 @@ export default async function ForPage({ params }: Props) {
   const item = getContentBySlug('for', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} section="for" sectionLabel="For You" sectionHref="/for" />;
+  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="for" sectionLabel="For You" sectionHref="/for" />;
 }

@@ -20,5 +20,5 @@ export default async function IndustryPage({ params }: Props) {
   const item = getContentBySlug('industries', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} section="industries" sectionLabel="Industries" sectionHref="/industries" />;
+  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="industries" sectionLabel="Industries" sectionHref="/industries" />;
 }

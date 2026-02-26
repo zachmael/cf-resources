@@ -4,8 +4,10 @@ import CTA from './CTA';
 import RelatedSidebar from './RelatedSidebar';
 import ExploreMoreResources from './ExploreMoreResources';
 import JsonLd from './JsonLd';
-import { breadcrumbSchema, articleSchema, faqSchema } from '@/lib/schema';
+import { breadcrumbSchema, articleSchema, faqSchema, howToSchema } from '@/lib/schema';
 import { type ContentMeta } from '@/lib/content';
+import ProgressBar from './ProgressBar';
+import { estimateReadingTime } from '@/lib/reading-time';
 import { type ReactElement } from 'react';
 import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
@@ -27,9 +29,11 @@ interface Props {
   section: string;
   sectionLabel: string;
   sectionHref: string;
+  rawContent?: string;
 }
 
-export default function SectionPage({ meta, rendered, section, sectionLabel, sectionHref }: Props) {
+export default function SectionPage({ meta, rendered, section, sectionLabel, sectionHref, rawContent }: Props) {
+  const readingTime = rawContent ? estimateReadingTime(rawContent) : null;
   const faqs = (meta.faqs as { question: string; answer: string }[]) || [];
   const relatedPages = (meta.relatedPages as string[]) || [];
   const heroImage = sectionHeroImages[section] || defaultSectionHero;
@@ -41,6 +45,24 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const crossLinks = getCrossSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const sameLinks = getSameSectionLinks(section, meta.slug, meta.title, meta.description || '');
 
+  // Extract HowTo steps from content headings for how-to section
+  const howToSteps: { name: string; text: string }[] = [];
+  if (section === 'how-to' && rawContent) {
+    const headingRegex = /^#{2,3}\s+(?:step\s*\d+[:.]\s*)?(.+)/gim;
+    const sections = rawContent.split(/^#{2,3}\s+/m).slice(1);
+    let match;
+    let idx = 0;
+    const headingMatches: string[] = [];
+    const re2 = /^#{2,3}\s+(.+)/gm;
+    while ((match = re2.exec(rawContent)) !== null) headingMatches.push(match[1].trim());
+    headingMatches.forEach((heading, i) => {
+      if (sections[i]) {
+        const text = sections[i].split(/^#{2,3}\s+/m)[0].replace(/\n/g, ' ').trim().slice(0, 300);
+        if (text) howToSteps.push({ name: heading, text });
+      }
+    });
+  }
+
   const schemas = [
     breadcrumbSchema([
       { name: 'Home', url: '/' },
@@ -49,10 +71,12 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
     ]),
     articleSchema(meta.title, meta.description, `/${section}/${meta.slug}`, lastUpdated),
     ...(faqs.length ? [faqSchema(faqs)] : []),
+    ...(howToSteps.length ? [howToSchema(meta.title, meta.description, `/${section}/${meta.slug}`, howToSteps)] : []),
   ];
 
   return (
     <>
+      <ProgressBar />
       {/* Last-modified meta tag */}
       <meta name="last-modified" content={lastUpdated} />
 
@@ -83,8 +107,9 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
         <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-14">
           <article>
             {/* Freshness signal */}
-            <p className="text-xs text-brand-400 mb-6">
+            <p className="text-xs text-brand-400 dark:text-gray-500 mb-6">
               Last updated: <time dateTime={lastUpdated}>{new Date(lastUpdated + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              {readingTime && <> · {readingTime} min read</>}
             </p>
 
             <div className="prose">{rendered}</div>
@@ -123,7 +148,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               />
             )}
             {/* Sidebar freshness */}
-            <p className="text-xs text-brand-400 pl-1">Last updated: {lastUpdated}</p>
+            <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
           </aside>
         </div>
       </div>

@@ -157,6 +157,26 @@ export const personaImageMap: Record<string, string> = {
   'utility-director':               px(13875374),  // power lines transformers
 };
 
+// ─── Regulation Images (1 per regulation) ──────────────────────────────────
+
+export const regulationImageMap: Record<string, string> = {
+  'csrd-corporate-sustainability-reporting-directive':          px(5668473),
+  'sec-climate-disclosure-rule':                               px(6120218),
+  'eu-taxonomy-regulation':                                    px(3760529),
+  'california-sb253-climate-corporate-data-accountability-act': px(1550337),
+  'california-sb261-climate-related-financial-risk-act':       px(1181244),
+  'cbam-carbon-border-adjustment-mechanism':                   px(2226458),
+  'tnfd-taskforce-nature-related-financial-disclosures':       px(1366919),
+  'issb-ifrs-sustainability-standards':                        px(6801648),
+  'uk-sustainability-disclosure-requirements':                 px(672532),
+  'german-supply-chain-due-diligence-act':                     px(4481259),
+  'epa-greenhouse-gas-reporting-program':                      px(459728),
+  'inflation-reduction-act-climate-provisions':                px(356049),
+  'european-deforestation-regulation':                         px(1179229),
+  'corporate-sustainability-due-diligence-directive':          px(3184339),
+  'global-biodiversity-framework':                             px(1179229),
+};
+
 // ─── Comparison Images (1 per comparison) ──────────────────────────────────
 
 export const compareImageMap: Record<string, string> = {
@@ -258,6 +278,7 @@ export function getLocationImages(slug: string): string[] {
  * Get an image for a guide, industry, persona, or comparison page.
  */
 export function getTopicImage(section: string, slug: string): string {
+  if (section === 'regulations' && regulationImageMap[slug]) return regulationImageMap[slug];
   if (section === 'guides' && guideImageMap[slug]) return guideImageMap[slug];
   if (section === 'industries' && industryImageMap[slug]) return industryImageMap[slug];
   if ((section === 'personas' || section === 'for') && personaImageMap[slug]) return personaImageMap[slug];

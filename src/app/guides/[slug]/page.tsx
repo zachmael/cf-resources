@@ -20,5 +20,5 @@ export default async function GuidePage({ params }: Props) {
   const item = getContentBySlug('guides', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} section="guides" sectionLabel="Guides" sectionHref="/guides" />;
+  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="guides" sectionLabel="Guides" sectionHref="/guides" />;
 }

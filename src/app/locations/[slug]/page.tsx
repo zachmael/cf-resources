@@ -20,5 +20,5 @@ export default async function LocationPage({ params }: Props) {
   const item = getContentBySlug('locations', params.slug);
   if (!item) notFound();
   const rendered = await renderMDX(item.content);
-  return <SectionPage meta={item.meta} rendered={rendered} section="locations" sectionLabel="Locations" sectionHref="/locations" />;
+  return <SectionPage meta={item.meta} rendered={rendered} rawContent={item.content} section="locations" sectionLabel="Locations" sectionHref="/locations" />;
 }

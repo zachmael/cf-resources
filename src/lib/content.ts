@@ -48,7 +48,7 @@ export function getAllContent(section: string): ContentItem[] {
 }
 
 export function getAllContentForSearch(): { title: string; slug: string; section: string; description: string }[] {
-  const sections = ['glossary', 'compare', 'locations', 'for', 'guides', 'industries'];
+  const sections = ['glossary', 'compare', 'locations', 'for', 'guides', 'industries', 'regulations'];
   const items: { title: string; slug: string; section: string; description: string }[] = [];
   for (const section of sections) {
     for (const item of getAllContent(section)) {

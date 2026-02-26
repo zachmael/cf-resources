@@ -12,14 +12,14 @@ export default function RelatedSidebar({ items, title = 'Related Resources' }: {
     <div className="space-y-6">
       {/* Related resources */}
       {items.length > 0 && (
-        <aside className="rounded-2xl border border-brand-200 bg-white p-6 shadow-sm">
-          <h3 className="font-heading font-semibold text-brand-800 mb-4 text-sm uppercase tracking-wider">{title}</h3>
+        <aside className="rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm">
+          <h3 className="font-heading font-semibold text-brand-800 dark:text-gray-200 mb-4 text-sm uppercase tracking-wider">{title}</h3>
           <div className="flex flex-wrap gap-2">
             {items.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="inline-flex items-center rounded-full bg-brand-50 border border-brand-200 px-3.5 py-1.5 text-sm text-brand-700 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-700 transition-all"
+                className="inline-flex items-center rounded-full bg-brand-50 dark:bg-white/5 border border-brand-200 dark:border-white/10 px-3.5 py-1.5 text-sm text-brand-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:border-teal-300 hover:text-teal-700 dark:hover:text-teal-400 transition-all"
               >
                 {item.title}
               </Link>

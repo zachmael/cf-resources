@@ -54,6 +54,27 @@ export function faqSchema(faqs: { question: string; answer: string }[]) {
   };
 }
 
+export function howToSchema(
+  title: string,
+  description: string,
+  url: string,
+  steps: { name: string; text: string }[],
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: title,
+    description,
+    url: `${BASE_URL}${url}`,
+    step: steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export function articleSchema(title: string, description: string, url: string, dateModified?: string) {
   return {
     '@context': 'https://schema.org',

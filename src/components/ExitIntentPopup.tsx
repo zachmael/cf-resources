@@ -56,7 +56,7 @@ export default function ExitIntentPopup() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-md rounded-2xl bg-white dark:bg-brand-800 shadow-2xl overflow-hidden">
         {/* Top accent */}
         <div className="h-1.5 bg-gradient-to-r from-[#258193] to-teal-400" />
 
@@ -75,10 +75,10 @@ export default function ExitIntentPopup() {
             <span className="w-2 h-2 rounded-full bg-[#258193]" />
             <span className="text-xs font-bold text-[#258193] uppercase tracking-wider">Before you go</span>
           </div>
-          <h2 className="text-xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-xl font-extrabold text-gray-900 dark:text-white leading-tight">
             Get Council Fire&apos;s sustainability intel
           </h2>
-          <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
             Expert insights on ESG, climate resilience, and sustainability strategy — delivered to your inbox.
           </p>
 

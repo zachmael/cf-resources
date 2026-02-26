@@ -9,6 +9,7 @@ const sections = [
   { title: 'Locations', href: '/locations', desc: 'Climate risks and regulations by region.', icon: '📍', count: 'locations', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop' },
   { title: 'Guides', href: '/guides', desc: 'Step-by-step compliance and framework guides.', icon: '📋', count: 'guides', image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=500&fit=crop' },
   { title: 'Industries', href: '/industries', desc: 'Sector-specific sustainability insights.', icon: '🏭', count: 'industries', image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=500&fit=crop' },
+  { title: 'Regulations', href: '/regulations', desc: 'Key sustainability regulations and disclosure mandates explained.', icon: '⚖️', count: 'regulations', image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=500&fit=crop' },
   { title: 'For You', href: '/for', desc: 'Resources tailored to your role.', icon: '👤', count: 'for', image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=500&fit=crop' },
 ];
 

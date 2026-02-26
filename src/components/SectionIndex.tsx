@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Breadcrumb from './Breadcrumb';
 import { type ContentItem } from '@/lib/content';
 import { getTopicImage, getLocationImages, industryImages } from '@/lib/pexels-images';
+import { estimateReadingTime } from '@/lib/reading-time';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=800&fit=crop',
@@ -62,7 +63,7 @@ export default function SectionIndex({ title, description, section, items, bread
                 <Link
                   key={item.meta.slug}
                   href={`/${section}/${item.meta.slug}`}
-                  className="group relative rounded-2xl overflow-hidden bg-white border border-brand-200 hover:border-teal-400 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
+                  className="group relative rounded-2xl overflow-hidden bg-white dark:bg-white/5 border border-brand-200 dark:border-white/10 hover:border-teal-400 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
                   style={{ animationDelay: `${i * 0.04}s`, animationFillMode: 'both' }}
                 >
                   {/* Card image */}
@@ -84,15 +85,15 @@ export default function SectionIndex({ title, description, section, items, bread
 
                   {/* Card content */}
                   <div className="p-5">
-                    <h2 className="font-bold text-brand-800 group-hover:text-teal-600 transition-colors leading-snug">
+                    <h2 className="font-bold text-brand-800 dark:text-gray-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors leading-snug">
                       {item.meta.title}
                     </h2>
-                    <p className="text-sm text-brand-500 mt-2 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-brand-500 dark:text-gray-400 mt-2 line-clamp-2 leading-relaxed">
                       {item.meta.description}
                     </p>
                     <div className="mt-4 flex items-center justify-between">
                       <span className="text-xs font-semibold text-teal-500 group-hover:text-teal-600 transition-colors uppercase tracking-wide">
-                        Read more
+                        {item.content ? `${estimateReadingTime(item.content)} min read` : 'Read more'}
                       </span>
                       <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 text-brand-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
                         <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
