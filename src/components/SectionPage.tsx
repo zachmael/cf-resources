@@ -3,6 +3,7 @@ import Breadcrumb from './Breadcrumb';
 import FAQ from './FAQ';
 import CTA from './CTA';
 import InlineCTA from './InlineCTA';
+import ProseWithCTAs from './ProseWithCTAs';
 import RelatedSidebar from './RelatedSidebar';
 import ExploreMoreResources from './ExploreMoreResources';
 import JsonLd from './JsonLd';
@@ -116,10 +117,9 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               {readingTime && <> · {readingTime} min read</>}
             </p>
 
-            <div className="prose">{rendered}</div>
-
-            {/* Inline CTA mid-article */}
-            <InlineCTA topic={meta.title} />
+            <div className="prose">
+              <ProseWithCTAs rendered={rendered} topic={meta.title} interval={3} />
+            </div>
 
             {/* Inline images */}
             {inlineImages.length > 0 && (
