@@ -132,9 +132,9 @@ export const howToImageMap: Record<string, string> = {
   'how-to-conduct-a-climate-risk-assessment':           px(1446076),   // flooding/storm
   'how-to-write-a-csrd-compliant-report':               px(5668473),   // EU compliance
   'how-to-integrate-biodiversity-into-business-strategy': px(1640777), // nature biodiversity
-  'how-to-create-a-circular-economy-strategy':          px(802221),    // recycling circular
+  'how-to-create-a-circular-economy-strategy':          px(2547565),   // plastic bottles recycling
   'how-to-develop-sustainable-supply-chain-policies':   px(4481258),   // warehouse logistics
-  'how-to-build-community-climate-resilience':          px(2774556),   // community gathering
+  'how-to-build-community-climate-resilience':          px(5487075),   // volunteers planting trees
 };
 
 // ─── Industry Images (1 per industry) ──────────────────────────────────────
@@ -180,21 +180,21 @@ export const personaImageMap: Record<string, string> = {
 // ─── Regulation Images (1 per regulation) ──────────────────────────────────
 
 export const regulationImageMap: Record<string, string> = {
-  'csrd-corporate-sustainability-reporting-directive':          px(5668473),
-  'sec-climate-disclosure-rule':                               px(6120218),
-  'eu-taxonomy-regulation':                                    px(3760529),
-  'california-sb253-climate-corporate-data-accountability-act': px(1550337),
-  'california-sb261-climate-related-financial-risk-act':       px(1181244),
-  'cbam-carbon-border-adjustment-mechanism':                   px(2226458),
-  'tnfd-taskforce-nature-related-financial-disclosures':       px(1366919),
-  'issb-ifrs-sustainability-standards':                        px(6801648),
-  'uk-sustainability-disclosure-requirements':                 px(672532),
-  'german-supply-chain-due-diligence-act':                     px(4481259),
-  'epa-greenhouse-gas-reporting-program':                      px(459728),
-  'inflation-reduction-act-climate-provisions':                px(356049),
-  'european-deforestation-regulation':                         px(1179229),
-  'corporate-sustainability-due-diligence-directive':          px(3184339),
-  'global-biodiversity-framework':                             px(1179229),
+  'csrd-corporate-sustainability-reporting-directive':          px(11682403),  // European Parliament hemicycle, Strasbourg
+  'sec-climate-disclosure-rule':                               px(210607),    // stock exchange board, Wall Street
+  'eu-taxonomy-regulation':                                    px(13153479),  // EU Commission flags, Brussels
+  'california-sb253-climate-corporate-data-accountability-act': px(1141853),  // Golden Gate Bridge fog, California
+  'california-sb261-climate-related-financial-risk-act':       px(1485894),   // Bay Bridge sunset silhouette, CA
+  'cbam-carbon-border-adjustment-mechanism':                   px(9861245),   // factory smokestacks, industrial
+  'tnfd-taskforce-nature-related-financial-disclosures':       px(17681763),  // coral reef sea anemones, nature
+  'issb-ifrs-sustainability-standards':                        px(7681081),   // financial documents close-up
+  'uk-sustainability-disclosure-requirements':                 px(18338026),  // Big Ben through arch, London
+  'german-supply-chain-due-diligence-act':                     px(23380998),  // Hamburg container ship terminal
+  'epa-greenhouse-gas-reporting-program':                      px(3080527),   // smokestack emitting smoke
+  'inflation-reduction-act-climate-provisions':                px(35105428),  // aerial wind turbines + solar panels
+  'european-deforestation-regulation':                         px(5091702),   // aerial view of deforestation
+  'corporate-sustainability-due-diligence-directive':          px(7993894),   // corporate conference meeting
+  'global-biodiversity-framework':                             px(3684931),   // coral reef underwater, biodiversity
 };
 
 // ─── Comparison Images (1 per comparison) ──────────────────────────────────
