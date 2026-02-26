@@ -62,7 +62,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="border-b border-brand-200 bg-white">
+      <section className="border-b border-brand-200 dark:border-white/10 bg-white dark:bg-[#111]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3 text-sm">
             {[
@@ -72,8 +72,8 @@ export default function HomePage() {
               { value: 'Free', label: '& Open' },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-2">
-                <span className="text-2xl font-extrabold font-heading text-brand-800">{stat.value}</span>
-                <span className="text-brand-500 font-medium">{stat.label}</span>
+                <span className="text-2xl font-extrabold font-heading text-brand-800 dark:text-white">{stat.value}</span>
+                <span className="text-brand-500 dark:text-gray-400 font-medium">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -81,10 +81,10 @@ export default function HomePage() {
       </section>
 
       {/* Section Cards */}
-      <section className="relative overflow-hidden bg-brand-50">
+      <section className="relative overflow-hidden bg-brand-50 dark:bg-[#1a1a1a]">
         {/* Decorative background shapes */}
-        <div className="absolute top-20 -right-40 w-[600px] h-[600px] rounded-full bg-brand-100 opacity-60" />
-        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-brand-100 opacity-40" />
+        <div className="absolute top-20 -right-40 w-[600px] h-[600px] rounded-full bg-brand-100 dark:bg-white/5 opacity-60" />
+        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-brand-100 dark:bg-white/5 opacity-40" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
           {/* Section label */}
@@ -92,15 +92,15 @@ export default function HomePage() {
             <span className="w-2 h-2 rounded-full bg-amber-500" />
             <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">Explore</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 tracking-tight">Our Resources</h2>
-          <p className="mt-4 text-lg text-brand-500 max-w-xl">Everything you need to understand sustainability — organized, searchable, and written by consultants.</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Our Resources</h2>
+          <p className="mt-4 text-lg text-brand-500 dark:text-gray-400 max-w-xl">Everything you need to understand sustainability — organized, searchable, and written by consultants.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
             {sections.map((s, i) => (
               <Link
                 key={s.href}
                 href={s.href}
-                className="group relative rounded-2xl bg-white border border-brand-200 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
+                className="group relative rounded-2xl bg-white dark:bg-[#222] border border-brand-200 dark:border-white/10 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 animate-slide-up"
                 style={{ animationDelay: `${i * 0.08}s`, animationFillMode: 'both' }}
               >
                 {/* Card image */}
@@ -117,15 +117,15 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold font-heading text-brand-800 group-hover:text-teal-600 transition-colors">
+                  <h3 className="text-lg font-bold font-heading text-brand-800 dark:text-white group-hover:text-teal-600 transition-colors">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-sm text-brand-500 leading-relaxed">{s.desc}</p>
+                  <p className="mt-2 text-sm text-brand-500 dark:text-gray-400 leading-relaxed">{s.desc}</p>
                   <div className="mt-4 flex items-center justify-between">
                     {counts[s.count] > 0 && (
-                      <span className="text-xs font-semibold text-amber-600 bg-amber-50 rounded-full px-2.5 py-1">{counts[s.count]} {counts[s.count] === 1 ? 'entry' : 'entries'}</span>
+                      <span className="text-xs font-semibold text-amber-600 bg-amber-50 dark:bg-amber-900/30 rounded-full px-2.5 py-1">{counts[s.count]} {counts[s.count] === 1 ? 'entry' : 'entries'}</span>
                     )}
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 text-brand-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-50 dark:bg-white/10 text-brand-400 dark:text-gray-400 group-hover:bg-teal-500 group-hover:text-white transition-all">
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                     </span>
                   </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
 
       {/* Featured Content */}
       {featured.length > 0 && (
-        <section className="bg-white">
+        <section className="bg-white dark:bg-[#111]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
             <div className="flex items-center justify-between mb-12">
               <div>
@@ -146,10 +146,10 @@ export default function HomePage() {
                   <span className="w-2 h-2 rounded-full bg-teal-500" />
                   <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">Featured</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 tracking-tight">Key Concepts</h2>
-                <p className="mt-3 text-brand-500 text-lg">Essential sustainability terms every professional should know.</p>
+                <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Key Concepts</h2>
+                <p className="mt-3 text-brand-500 dark:text-gray-400 text-lg">Essential sustainability terms every professional should know.</p>
               </div>
-              <Link href="/glossary" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 group">
+              <Link href="/glossary" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
                 View all
                 <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:scale-105">
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -168,7 +168,7 @@ export default function HomePage() {
                 <Link
                   key={item.meta.slug}
                   href={`/glossary/${item.meta.slug}`}
-                  className="group rounded-2xl border border-brand-200 bg-white overflow-hidden hover:border-teal-400 hover:shadow-xl transition-all duration-300"
+                  className="group rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] overflow-hidden hover:border-teal-400 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="h-36 overflow-hidden">
                     <img src={thumbs[i % thumbs.length]} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -180,8 +180,8 @@ export default function HomePage() {
                         {item.meta.category}
                       </span>
                     )}
-                    <h3 className="text-xl font-bold text-brand-800 group-hover:text-teal-600 transition-colors">{item.meta.title}</h3>
-                    <p className="mt-3 text-brand-500 line-clamp-2 leading-relaxed">{item.meta.description}</p>
+                    <h3 className="text-xl font-bold text-brand-800 dark:text-white group-hover:text-teal-600 transition-colors">{item.meta.title}</h3>
+                    <p className="mt-3 text-brand-500 dark:text-gray-400 line-clamp-2 leading-relaxed">{item.meta.description}</p>
                     <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-teal-500">
                       Read more
                       <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
