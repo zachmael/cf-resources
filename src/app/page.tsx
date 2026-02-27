@@ -12,6 +12,8 @@ const sections = [
   { title: 'Industries', href: '/industries', desc: 'Sector-specific sustainability insights.', icon: '🏭', count: 'industries', image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=500&fit=crop' },
   { title: 'Regulations', href: '/regulations', desc: 'Key sustainability regulations and disclosure mandates explained.', icon: '⚖️', count: 'regulations', image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=500&fit=crop' },
   { title: 'For You', href: '/for', desc: 'Resources tailored to your role.', icon: '👤', count: 'for', image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=500&fit=crop' },
+  { title: 'Case Studies', href: '/case-studies', desc: 'Real-world sustainability project examples across industries.', icon: '📊', count: 'case-studies', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop' },
+  { title: 'Frameworks', href: '/frameworks', desc: 'Deep dives into major sustainability frameworks and standards.', icon: '🏗️', count: 'frameworks', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop' },
 ];
 
 export default function HomePage() {

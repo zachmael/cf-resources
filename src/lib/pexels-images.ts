@@ -258,6 +258,56 @@ export const compareImageMap: Record<string, string> = {
   'science-based-vs-self-set-targets':                    px(1108572),
 };
 
+// ─── Case Study Images (1 per case study) ──────────────────────────────────
+
+export const caseStudyImageMap: Record<string, string> = {
+  'fortune-500-csrd-compliance':              px(5668858),   // EU compliance documents
+  'coastal-city-climate-resilience-plan':      px(1446076),   // flooding storm
+  'energy-utility-net-zero-transition':        px(433308),    // energy power lines
+  'foundation-ocean-conservation-strategy':    px(1001682),   // ocean underwater
+  'port-authority-sustainability-savings':     px(21241152),  // cargo ship containers
+  'university-carbon-neutrality-roadmap':      px(207692),    // university campus
+  'food-company-scope-3-reduction':            px(2252584),   // food and beverage
+  'municipal-resilience-authority-launch':     px(17507798),  // government building
+  'real-estate-portfolio-esg-integration':     px(323780),    // real estate buildings
+  'transportation-agency-electrification':     px(2199293),   // transportation road
+  'healthcare-system-climate-risk-assessment': px(247786),    // healthcare hospital
+  'tech-company-science-based-targets':        px(373543),    // technology
+  'financial-services-tcfd-reporting':         px(210574),    // financial services
+  'agricultural-cooperative-biodiversity':     px(974314),    // agriculture farming
+  'defense-contractor-environmental-compliance': px(3862627), // defense military
+  'hotel-chain-water-stewardship':             px(258154),    // hospitality hotel
+  'manufacturing-circular-economy':            px(1108101),   // manufacturing
+  'nonprofit-coalition-stakeholder-engagement': px(6647007),  // volunteers community
+  'island-nation-climate-adaptation':          px(1295138),   // tropical island
+  'documentary-film-impact-campaign':          px(66134),     // camera filmmaking
+};
+
+// ─── Framework Images (1 per framework) ────────────────────────────────────
+
+export const frameworkImageMap: Record<string, string> = {
+  'gri-standards':                       px(3184291),   // business reporting
+  'issb-ifrs-s1-s2':                     px(7681081),   // financial documents
+  'tcfd-recommendations':                px(3593922),   // climate data analysis
+  'sbti-science-based-targets':          px(2280547),   // science targets
+  'ghg-protocol':                        px(280221),    // emissions industrial
+  'cdp-disclosure':                      px(590016),    // disclosure documents
+  'sasb-standards':                      px(7654579),   // industry standards
+  'tnfd-framework':                      px(1598073),   // nature biodiversity
+  'un-sdgs':                             px(886521),    // sustainability globe
+  'eu-esrs':                             px(11682403),  // European Parliament
+  'iso-14001':                           px(3183197),   // environmental management
+  'iso-14064':                           px(3912982),   // ghg measurement
+  'equator-principles':                  px(534216),    // project finance
+  'psi-principles':                      px(1118873),   // risk management
+  'pri-principles':                      px(7567236),   // investment market
+  'natural-capital-protocol':            px(1108099),   // natural capital
+  'circular-economy-framework':          px(802221),    // circular recycling
+  'climate-bonds-standard':              px(459728),    // green bonds finance
+  'b-corp-certification':                px(8112180),   // b corp business
+  'science-based-targets-for-nature':    px(339614),    // nature forest
+};
+
 // ─── Legacy topic images (fallback references) ────────────────────────────
 
 export const topicImages: Record<string, string[]> = {
@@ -308,6 +358,8 @@ export function getLocationImages(slug: string): string[] {
  * Get an image for a guide, industry, persona, or comparison page.
  */
 export function getTopicImage(section: string, slug: string): string {
+  if (section === 'case-studies' && caseStudyImageMap[slug]) return caseStudyImageMap[slug];
+  if (section === 'frameworks' && frameworkImageMap[slug]) return frameworkImageMap[slug];
   if (section === 'regulations' && regulationImageMap[slug]) return regulationImageMap[slug];
   if (section === 'how-to' && howToImageMap[slug]) return howToImageMap[slug];
   if (section === 'guides' && guideImageMap[slug]) return guideImageMap[slug];
