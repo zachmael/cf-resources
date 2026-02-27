@@ -243,6 +243,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Interactive Tools */}
+      <section className="bg-brand-50 dark:bg-[#1a1a1a]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
+                <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">Interactive</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Free Tools</h2>
+              <p className="mt-3 text-brand-500 dark:text-gray-400 text-lg">Instant assessments to understand where you stand.</p>
+            </div>
+            <Link href="/tools" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
+              All tools
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'CSRD Checker', desc: 'Does the CSRD apply to you?', href: '/tools/csrd-checker', icon: '📋' },
+              { title: 'Carbon Estimator', desc: 'Estimate your emissions footprint.', href: '/tools/carbon-estimator', icon: '🌍' },
+              { title: 'ESG Readiness', desc: 'Quiz your sustainability maturity.', href: '/tools/esg-readiness', icon: '📊' },
+            ].map(t => (
+              <Link key={t.href} href={t.href} className="group rounded-2xl bg-white dark:bg-[#222] border border-brand-200 dark:border-white/10 p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span className="text-2xl">{t.icon}</span>
+                <h3 className="mt-3 font-bold text-brand-800 dark:text-white group-hover:text-teal-600 transition-colors">{t.title}</h3>
+                <p className="mt-1 text-sm text-brand-500 dark:text-gray-400">{t.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Tracks */}
+      <section className="bg-white dark:bg-[#111]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 rounded-full bg-teal-500" />
+                <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">Guided</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Learning Tracks</h2>
+              <p className="mt-3 text-brand-500 dark:text-gray-400 text-lg">Step-by-step paths curated by sustainability consultants.</p>
+            </div>
+            <Link href="/learn" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
+              All tracks
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'New to ESG', desc: 'Start from the basics and build your knowledge.', href: '/learn/new-to-esg', icon: '🌱' },
+              { title: 'CSRD Roadmap', desc: 'Prepare for EU sustainability reporting.', href: '/learn/csrd-compliance', icon: '📋' },
+              { title: 'Climate Risk', desc: 'Understand and manage climate-related risks.', href: '/learn/climate-risk', icon: '🌍' },
+            ].map(t => (
+              <Link key={t.href} href={t.href} className="group rounded-2xl bg-brand-50 dark:bg-[#1a1a1a] border border-brand-200 dark:border-white/10 p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span className="text-2xl">{t.icon}</span>
+                <h3 className="mt-3 font-bold text-brand-800 dark:text-white group-hover:text-teal-600 transition-colors">{t.title}</h3>
+                <p className="mt-1 text-sm text-brand-500 dark:text-gray-400">{t.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
