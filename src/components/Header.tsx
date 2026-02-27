@@ -15,6 +15,7 @@ const navItems = [
   { label: 'Industries', href: '/industries' },
   { label: 'Regulations', href: '/regulations' },
   { label: 'For You', href: '/for' },
+  { label: 'Free Tools', href: '/resources' },
 ];
 
 export default function Header() {

@@ -199,6 +199,50 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* Free Tools */}
+      <section className="bg-brand-50 dark:bg-[#1a1a1a]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
+                <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">Free Tools</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Downloadable Resources</h2>
+              <p className="mt-3 text-brand-500 dark:text-gray-400 text-lg">Professional checklists, worksheets, and templates — free with email signup.</p>
+            </div>
+            <Link href="/resources" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
+              View all
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:scale-105">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: 'CSRD Readiness Checklist', desc: '20 steps to prepare for EU CSRD compliance.', href: '/resources/csrd-readiness-checklist', icon: '📋', tag: 'Checklist' },
+              { title: 'Scope 3 Emissions Worksheet', desc: 'Measure value chain emissions across all 15 categories.', href: '/resources/scope-3-emissions-worksheet', icon: '📊', tag: 'Worksheet' },
+              { title: 'Double Materiality Template', desc: '7-step framework for ESRS-aligned materiality assessment.', href: '/resources/materiality-assessment-template', icon: '📐', tag: 'Template' },
+            ].map((r) => (
+              <Link key={r.href} href={r.href} className="group rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#222] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="h-1.5 bg-gradient-to-r from-[#258193] to-teal-400" />
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">{r.icon}</span>
+                    <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider bg-teal-50 dark:bg-teal-900/30 px-2 py-0.5 rounded-full">{r.tag}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-brand-800 dark:text-white group-hover:text-teal-600 transition-colors">{r.title}</h3>
+                  <p className="mt-2 text-sm text-brand-500 dark:text-gray-400">{r.desc}</p>
+                  <div className="mt-4 text-sm font-semibold text-teal-600 dark:text-teal-400 flex items-center gap-1">
+                    Get free access <svg className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
