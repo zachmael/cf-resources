@@ -19,7 +19,7 @@ export default function InlineCTA({ topic, section }: { topic: string; section?:
         </div>
         <a
           href="https://www.councilfire.org/contact"
-          className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#258193] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#1e6b7a] transition-colors shadow-sm"
+          className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#258193] px-5 py-2.5 text-sm font-bold !text-white hover:bg-[#1e6b7a] transition-colors shadow-sm no-underline"
         >
           {cta.button}
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
