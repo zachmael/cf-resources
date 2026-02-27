@@ -246,6 +246,16 @@ export const compareImageMap: Record<string, string> = {
   'tcfd-vs-tnfd':                                         px(5412270),
   'third-party-assurance-vs-self-reporting':              px(8370710),
   'voluntary-vs-compliance-carbon-markets':               px(4968382),
+  'csrd-vs-sec-climate-disclosure':                       px(6120218),
+  'sbti-vs-net-zero-standard':                            px(3862130),
+  'scope-1-2-vs-scope-3':                                 px(3850512),
+  'single-vs-double-materiality':                         px(5717411),
+  'voluntary-vs-mandatory-disclosure':                    px(6693661),
+  'b-corp-vs-esg-rating':                                 px(6476254),
+  'eu-taxonomy-vs-us-standards':                          px(1550337),
+  'physical-vs-transition-climate-risk':                  px(1118873),
+  'sasb-vs-gri':                                          px(6801648),
+  'science-based-vs-self-set-targets':                    px(1108572),
 };
 
 // ─── Legacy topic images (fallback references) ────────────────────────────
