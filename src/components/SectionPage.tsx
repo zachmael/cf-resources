@@ -14,6 +14,7 @@ import { estimateReadingTime } from '@/lib/reading-time';
 import { type ReactElement } from 'react';
 import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
+import { getRelatedBlogPosts } from '@/lib/blog-links';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop',
@@ -49,6 +50,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const lastUpdated = (meta.lastUpdated as string) || BUILD_DATE;
   const crossLinks = getCrossSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const sameLinks = getSameSectionLinks(section, meta.slug, meta.title, meta.description || '');
+  const blogPosts = getRelatedBlogPosts(meta.title, meta.description || '', section);
 
   // Extract HowTo steps from content headings for how-to section
   const howToSteps: { name: string; text: string }[] = [];
@@ -156,6 +158,26 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               section={section}
               topic={meta.title}
             />
+            {/* Blog cross-links */}
+            {blogPosts.length > 0 && (
+              <div className="rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#1a1a1a] p-5">
+                <h3 className="text-sm font-bold text-[#E8912D] mb-3">📝 From #AroundTheFire</h3>
+                <ul className="space-y-2.5">
+                  {blogPosts.map((post) => (
+                    <li key={post.url}>
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-brand-700 dark:text-gray-300 hover:text-[#258193] dark:hover:text-[#258193] transition-colors leading-snug block"
+                      >
+                        {post.title} <span className="text-brand-400">↗</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {/* Sidebar freshness */}
             <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
           </aside>
