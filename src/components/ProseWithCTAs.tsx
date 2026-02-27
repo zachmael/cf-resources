@@ -10,10 +10,12 @@ import InlineCTA from './InlineCTA';
 export default function ProseWithCTAs({
   rendered,
   topic,
+  section,
   interval = 3,
 }: {
   rendered: ReactElement;
   topic: string;
+  section?: string;
   interval?: number;
 }) {
   // Flatten children from the rendered MDX
@@ -49,7 +51,7 @@ export default function ProseWithCTAs({
         }
         result.push(
           <div key="inline-cta-mid" className="not-prose">
-            <InlineCTA topic={topic} />
+            <InlineCTA topic={topic} section={section} />
           </div>
         );
         ctaInserted = true;
@@ -61,7 +63,7 @@ export default function ProseWithCTAs({
   if (!ctaInserted) {
     result.push(
       <div key="inline-cta-end" className="not-prose">
-        <InlineCTA topic={topic} />
+        <InlineCTA topic={topic} section={section} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getCTACopy } from '@/lib/cta-config';
 
 interface RelatedItem {
   title: string;
@@ -7,7 +8,8 @@ interface RelatedItem {
   section?: string;
 }
 
-export default function RelatedSidebar({ items, title = 'Related Resources' }: { items: RelatedItem[]; title?: string }) {
+export default function RelatedSidebar({ items, title = 'Related Resources', section, topic }: { items: RelatedItem[]; title?: string; section?: string; topic?: string }) {
+  const cta = getCTACopy(section, topic);
   return (
     <div className="space-y-6">
       {/* Related resources */}
@@ -35,16 +37,16 @@ export default function RelatedSidebar({ items, title = 'Related Resources' }: {
             <Image src="/logo-icon.png" alt="Council Fire" width={400} height={364} className="h-7 w-auto brightness-0 invert" />
           </div>
           <h3 className="font-heading font-bold text-lg leading-snug">
-            Need expert guidance?
+            {cta.headline}
           </h3>
           <p className="text-sm text-teal-100 mt-2 leading-relaxed">
-            Council Fire helps organizations navigate sustainability strategy, climate resilience, and ESG reporting.
+            {cta.body}
           </p>
           <a
             href="https://www.councilfire.org/contact"
             className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-teal-700 px-5 py-2.5 text-sm font-bold hover:bg-teal-50 hover:shadow-md transition-all"
           >
-            Talk to Our Team
+            {cta.button}
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

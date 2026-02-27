@@ -1,7 +1,36 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, FormEvent } from 'react';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'footer-newsletter' }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error || 'Something went wrong.');
+        setStatus('error');
+      } else {
+        setStatus('success');
+      }
+    } catch {
+      setErrorMsg('Something went wrong.');
+      setStatus('error');
+    }
+  }
+
   return (
     <footer className="bg-brand-900">
       {/* Newsletter Strip */}
@@ -16,19 +45,36 @@ export default function Footer() {
               <h3 className="text-xl font-extrabold font-heading text-white">Sustainability insights, delivered.</h3>
               <p className="text-sm text-gray-400 mt-1">Get expert resources from Council Fire in your inbox.</p>
             </div>
-            <div className="flex w-full md:w-auto gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full md:w-72 rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-              <button className="group shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-teal-500 text-white hover:bg-teal-400 transition-all hover:scale-105">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </div>
+            {status === 'success' ? (
+              <div className="flex items-center gap-2 text-teal-400 font-semibold text-sm">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                You&apos;re in! Check your inbox.
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex w-full md:w-auto gap-2">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle'); }}
+                  placeholder="Enter your email"
+                  className="w-full md:w-72 rounded-full bg-white/10 border border-white/10 px-5 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="group shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-teal-500 text-white hover:bg-teal-400 transition-all hover:scale-105 disabled:opacity-50"
+                >
+                  {status === 'loading' ? (
+                    <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                  ) : (
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
+          {status === 'error' && <p className="text-red-400 text-sm mt-2 text-center md:text-right">{errorMsg}</p>}
         </div>
       </div>
 

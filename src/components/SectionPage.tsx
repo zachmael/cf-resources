@@ -118,7 +118,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
             </p>
 
             <div className="prose">
-              <ProseWithCTAs rendered={rendered} topic={meta.title} interval={3} />
+              <ProseWithCTAs rendered={rendered} topic={meta.title} section={section} interval={3} />
             </div>
 
             {/* Inline images */}
@@ -144,7 +144,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
             {/* Cross-links and same-section links */}
             <ExploreMoreResources crossLinks={crossLinks} sameLinks={sameLinks} />
 
-            <CTA topic={meta.title} />
+            <CTA topic={meta.title} section={section} />
           </article>
 
           <aside className="mt-10 lg:mt-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
@@ -153,6 +153,8 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
                 title: p,
                 href: `/${section}/${p.toLowerCase().replace(/[\s()]+/g, '-')}`,
               }))}
+              section={section}
+              topic={meta.title}
             />
             {/* Sidebar freshness */}
             <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
