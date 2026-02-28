@@ -1,8 +1,64 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
+
+type Recommendation = {
+  headline: string;
+  learningTrack?: { href: string; label: string };
+  resources: { href: string; label: string; emoji: string }[];
+  leadMagnet?: { name: string; emoji: string };
+  cta: string;
+};
+
+const recommendations: Record<string, Recommendation> = {
+  Beginner: {
+    headline: "You're just getting started — here's your roadmap",
+    learningTrack: { href: '/learn/new-to-esg', label: 'New to ESG Learning Track' },
+    resources: [
+      { href: '/glossary/esg-reporting', label: 'What is ESG Reporting?', emoji: '📖' },
+      { href: '/glossary/materiality-assessment', label: 'Materiality Assessment', emoji: '🎯' },
+      { href: '/glossary/greenhouse-gas-emissions', label: 'GHG Emissions Explained', emoji: '🌍' },
+      { href: '/how-to/how-to-implement-esg-reporting', label: 'How to Implement ESG Reporting', emoji: '📋' },
+    ],
+    leadMagnet: { name: 'Materiality Assessment Template', emoji: '📄' },
+    cta: 'Council Fire helps organizations build sustainability programs from the ground up. Book a free 15-minute call to discuss where to start.',
+  },
+  Developing: {
+    headline: "You've built a foundation — time to formalize",
+    learningTrack: { href: '/learn/csrd-compliance', label: 'CSRD Compliance Learning Track' },
+    resources: [
+      { href: '/glossary/csrd', label: 'Understanding CSRD', emoji: '🇪🇺' },
+      { href: '/glossary/gri-standards', label: 'GRI Standards Overview', emoji: '📊' },
+      { href: '/how-to/how-to-conduct-a-materiality-assessment', label: 'How to Conduct a Materiality Assessment', emoji: '🎯' },
+      { href: '/how-to/how-to-implement-esg-reporting', label: 'ESG Reporting Step-by-Step', emoji: '📋' },
+    ],
+    leadMagnet: { name: 'CSRD Readiness Checklist', emoji: '✅' },
+    cta: "Most organizations at your stage benefit from expert guidance on framework selection and reporting strategy. Let's talk about your next steps.",
+  },
+  Advanced: {
+    headline: "Strong program — let's optimize",
+    resources: [
+      { href: '/compare/gri-vs-issb', label: 'GRI vs ISSB: Which Framework?', emoji: '⚖️' },
+      { href: '/glossary/scope-3-emissions', label: 'Scope 3 Emissions Deep Dive', emoji: '🔗' },
+      { href: '/how-to/how-to-conduct-a-materiality-assessment', label: 'Advanced Materiality Assessment', emoji: '🎯' },
+      { href: '/glossary/science-based-targets', label: 'Science-Based Targets', emoji: '🔬' },
+    ],
+    leadMagnet: { name: 'Scope 3 Emissions Worksheet', emoji: '📊' },
+    cta: 'Council Fire works with advanced sustainability teams on Scope 3 measurement, target-setting, and stakeholder strategy. Ready to go deeper?',
+  },
+  Leader: {
+    headline: "You're leading the pack",
+    resources: [
+      { href: '/glossary/csrd', label: 'CSRD Framework Deep Dive', emoji: '🇪🇺' },
+      { href: '/compare/gri-vs-issb', label: 'GRI vs ISSB Comparison', emoji: '⚖️' },
+      { href: '/glossary/tcfd', label: 'TCFD & Climate Disclosure', emoji: '🌡️' },
+      { href: '/glossary/science-based-targets', label: 'Science-Based Targets', emoji: '🔬' },
+    ],
+    cta: "Council Fire partners with sustainability leaders on cutting-edge challenges — from nature-positive strategies to climate adaptation. Let's connect.",
+  },
+};
 
 const questions = [
   { q: 'Does your organization have a formal sustainability or ESG policy?', tip: 'A written ESG policy signals commitment and guides decision-making across the organization.' },

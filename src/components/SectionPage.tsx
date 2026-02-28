@@ -15,6 +15,10 @@ import { type ReactElement } from 'react';
 import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
 import { getRelatedBlogPosts } from '@/lib/blog-links';
+import { getRelevantCaseStudies } from '@/lib/case-study-links';
+import CaseStudyCallout from './CaseStudyCallout';
+import { getRelevantLeadMagnet } from '@/lib/lead-magnet-config';
+import LeadMagnetBanner from './LeadMagnetBanner';
 
 const sectionHeroImages: Record<string, string> = {
   compare: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop',
@@ -51,6 +55,8 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const crossLinks = getCrossSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const sameLinks = getSameSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const blogPosts = getRelatedBlogPosts(meta.title, meta.description || '', section);
+  const caseStudies = getRelevantCaseStudies(section, meta.slug, meta.title, meta.description);
+  const leadMagnet = getRelevantLeadMagnet(section, meta.slug, meta.title);
 
   // Extract HowTo steps from content headings for how-to section
   const howToSteps: { name: string; text: string }[] = [];
@@ -141,6 +147,8 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               </div>
             )}
 
+            {caseStudies.length > 0 && <CaseStudyCallout studies={caseStudies} />}
+
             {faqs.length > 0 && <FAQ items={faqs} />}
 
             {/* Cross-links and same-section links */}
@@ -178,6 +186,8 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
                 </ul>
               </div>
             )}
+            {/* Lead magnet banner */}
+            {leadMagnet && <LeadMagnetBanner magnet={leadMagnet} />}
             {/* Sidebar freshness */}
             <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
           </aside>
