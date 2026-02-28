@@ -130,17 +130,17 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <HeaderSearch />
             <DarkModeToggle />
-            <a
-              href="https://www.councilfire.org/contact"
+            <Link
+              href="/work-with-us"
               className="group inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200"
             >
-              Contact Us
+              Work With Us
               <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:shadow-lg group-hover:scale-105">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -203,15 +203,16 @@ export default function Header() {
             </Link>
           ))}
 
-          <a
-            href="https://www.councilfire.org/contact"
+          <Link
+            href="/work-with-us"
+            onClick={() => setMobileOpen(false)}
             className="flex items-center justify-center gap-2 mt-3 rounded-full bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white"
           >
-            Contact Us
+            Work With Us
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </nav>
       )}
     </header>
