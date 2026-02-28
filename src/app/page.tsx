@@ -63,6 +63,22 @@ export default function HomePage() {
           <div className="mt-10 max-w-xl animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
             <SearchBar items={searchItems} />
           </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            <a
+              href="https://www.councilfire.org/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-[#258193] px-6 py-3 text-sm font-bold text-white hover:bg-[#1e6b7a] transition-colors shadow-lg"
+            >
+              Work With Council Fire
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+            <a
+              href="https://www.councilfire.org/about"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors"
+            >
+              Learn about our team
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            </a>
+          </div>
         </div>
       </section>
 
