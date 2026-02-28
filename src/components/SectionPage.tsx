@@ -149,6 +149,33 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
 
             {caseStudies.length > 0 && <CaseStudyCallout studies={caseStudies} />}
 
+            {/* Blog cross-links (moved from sidebar) */}
+            {blogPosts.length > 0 && (
+              <div className="my-10 rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#1a1a1a] p-6">
+                <h3 className="text-sm font-bold text-[#E8912D] mb-3">📝 From #AroundTheFire</h3>
+                <div className="flex flex-wrap gap-3">
+                  {blogPosts.map((post) => (
+                    <a
+                      key={post.url}
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-brand-700 dark:text-gray-300 hover:text-[#258193] dark:hover:text-[#258193] transition-colors leading-snug"
+                    >
+                      {post.title} <span className="text-brand-400">↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Lead magnet banner (moved from sidebar) */}
+            {leadMagnet && (
+              <div className="my-10">
+                <LeadMagnetBanner magnet={leadMagnet} />
+              </div>
+            )}
+
             {faqs.length > 0 && <FAQ items={faqs} />}
 
             {/* Cross-links and same-section links */}
@@ -166,28 +193,6 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               section={section}
               topic={meta.title}
             />
-            {/* Blog cross-links */}
-            {blogPosts.length > 0 && (
-              <div className="rounded-2xl border border-brand-200 dark:border-white/10 bg-white dark:bg-[#1a1a1a] p-5">
-                <h3 className="text-sm font-bold text-[#E8912D] mb-3">📝 From #AroundTheFire</h3>
-                <ul className="space-y-2.5">
-                  {blogPosts.map((post) => (
-                    <li key={post.url}>
-                      <a
-                        href={post.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-brand-700 dark:text-gray-300 hover:text-[#258193] dark:hover:text-[#258193] transition-colors leading-snug block"
-                      >
-                        {post.title} <span className="text-brand-400">↗</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {/* Lead magnet banner */}
-            {leadMagnet && <LeadMagnetBanner magnet={leadMagnet} />}
             {/* Sidebar freshness */}
             <p className="text-xs text-brand-400 dark:text-gray-500 pl-1">Last updated: {lastUpdated}</p>
           </aside>
