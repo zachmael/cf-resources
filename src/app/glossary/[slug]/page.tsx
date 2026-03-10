@@ -10,7 +10,7 @@ import JsonLd from '@/components/JsonLd';
 import Image from 'next/image';
 import { renderMDX } from '@/lib/mdx';
 import { getContentBySlug, getContentSlugs } from '@/lib/content';
-import { breadcrumbSchema, definedTermSchema, faqSchema } from '@/lib/schema';
+import { breadcrumbSchema, definedTermSchema, faqSchema, articleSchema } from '@/lib/schema';
 import { getRelevantCFLinks } from '@/lib/cf-links';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
 
@@ -88,6 +88,7 @@ export default async function GlossaryPage({ params }: Props) {
       { name: meta.title, url: `/glossary/${meta.slug}` },
     ]),
     definedTermSchema(meta.title, meta.description, `/glossary/${meta.slug}`),
+    articleSchema(meta.title, meta.description, `/glossary/${meta.slug}`, lastUpdated),
     ...(faqs.length ? [faqSchema(faqs)] : []),
   ];
 
