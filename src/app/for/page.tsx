@@ -5,6 +5,8 @@ import { getAllContent } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'For You — Role-Based Sustainability Resources',
   description: 'Sustainability resources tailored to your role and responsibilities.',
+  openGraph: { title: 'For You — Role-Based Sustainability Resources', description: 'Sustainability resources tailored to your role and responsibilities.', url: 'https://resources.councilfire.org/for', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'For You — Role-Based Sustainability Resources', description: 'Sustainability resources tailored to your role and responsibilities.' },
 };
 
 export default function ForIndex() {

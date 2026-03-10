@@ -7,6 +7,8 @@ import GlossaryClient from './GlossaryClient';
 export const metadata: Metadata = {
   title: 'Sustainability Glossary',
   description: 'A comprehensive glossary of sustainability, ESG, and climate terminology — explained by consultants, for professionals.',
+  openGraph: { title: 'Sustainability Glossary', description: 'A comprehensive glossary of sustainability, ESG, and climate terminology — explained by consultants, for professionals.', url: 'https://resources.councilfire.org/glossary', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Sustainability Glossary', description: 'A comprehensive glossary of sustainability, ESG, and climate terminology — explained by consultants, for professionals.' },
 };
 
 export default function GlossaryIndex() {

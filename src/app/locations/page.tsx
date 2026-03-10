@@ -5,6 +5,8 @@ import { getAllContent } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'Locations — Climate Risk by Region',
   description: 'Climate risks, regulations, and sustainability opportunities by region.',
+  openGraph: { title: 'Locations — Climate Risk by Region', description: 'Climate risks, regulations, and sustainability opportunities by region.', url: 'https://resources.councilfire.org/locations', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Locations — Climate Risk by Region', description: 'Climate risks, regulations, and sustainability opportunities by region.' },
 };
 
 export default function LocationsIndex() {

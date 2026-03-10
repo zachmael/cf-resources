@@ -3,8 +3,10 @@ import SectionIndex from '@/components/SectionIndex';
 import { getAllContent } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Sustainability Frameworks & Standards | Council Fire',
+  title: 'Sustainability Frameworks & Standards',
   description: 'Deep dives into major sustainability frameworks, reporting standards, and certification programs — GRI, ISSB, TCFD, SBTi, and more.',
+  openGraph: { title: 'Sustainability Frameworks & Standards', description: 'Deep dives into major sustainability frameworks, reporting standards, and certification programs — GRI, ISSB, TCFD, SBTi, and more.', url: 'https://resources.councilfire.org/frameworks', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Sustainability Frameworks & Standards', description: 'Deep dives into major sustainability frameworks, reporting standards, and certification programs — GRI, ISSB, TCFD, SBTi, and more.' },
 };
 
 export default function FrameworksIndex() {

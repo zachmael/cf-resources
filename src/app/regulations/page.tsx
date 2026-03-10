@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: 'Sustainability Regulations & Compliance Guides',
   description: 'Expert guides to sustainability regulations worldwide — CSRD, SEC climate rule, EU Taxonomy, and more. Requirements, timelines, and compliance steps.',
   alternates: { canonical: '/regulations' },
+  openGraph: { title: 'Sustainability Regulations & Compliance Guides', description: 'Expert guides to sustainability regulations worldwide — CSRD, SEC climate rule, EU Taxonomy, and more. Requirements, timelines, and compliance steps.', url: 'https://resources.councilfire.org/regulations', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Sustainability Regulations & Compliance Guides', description: 'Expert guides to sustainability regulations worldwide — CSRD, SEC climate rule, EU Taxonomy, and more. Requirements, timelines, and compliance steps.' },
 };
 
 export default function RegulationsIndex() {

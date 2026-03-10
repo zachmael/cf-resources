@@ -5,6 +5,8 @@ import { getAllContent } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'Sustainability Comparisons',
   description: 'Side-by-side comparisons of sustainability frameworks, standards, and approaches.',
+  openGraph: { title: 'Sustainability Comparisons', description: 'Side-by-side comparisons of sustainability frameworks, standards, and approaches.', url: 'https://resources.councilfire.org/compare', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Sustainability Comparisons', description: 'Side-by-side comparisons of sustainability frameworks, standards, and approaches.' },
 };
 
 export default function CompareIndex() {

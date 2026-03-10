@@ -5,6 +5,8 @@ import { getAllContent } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'Sustainability Guides & Frameworks',
   description: 'Step-by-step guides for sustainability frameworks, standards, and compliance.',
+  openGraph: { title: 'Sustainability Guides & Frameworks', description: 'Step-by-step guides for sustainability frameworks, standards, and compliance.', url: 'https://resources.councilfire.org/guides', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'Sustainability Guides & Frameworks', description: 'Step-by-step guides for sustainability frameworks, standards, and compliance.' },
 };
 
 export default function GuidesIndex() {

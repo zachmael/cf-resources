@@ -39,8 +39,26 @@ interface Props {
 export default function SectionIndex({ title, description, section, items, breadcrumbLabel }: Props) {
   const heroImage = sectionHeroImages[section] || defaultSectionHero;
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: title,
+    description,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.meta.title,
+      url: `https://resources.councilfire.org/${section}/${item.meta.slug}`,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[300px] flex items-end">
         <div className="absolute inset-0">

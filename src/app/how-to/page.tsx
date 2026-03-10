@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: 'How-To Guides for Sustainability Professionals',
   description: 'Practical, step-by-step guides for sustainability professionals — from writing reports and measuring emissions to setting targets and building strategies.',
   alternates: { canonical: '/how-to' },
+  openGraph: { title: 'How-To Guides for Sustainability Professionals', description: 'Practical, step-by-step guides for sustainability professionals — from writing reports and measuring emissions to setting targets and building strategies.', url: 'https://resources.councilfire.org/how-to', type: 'website', siteName: 'Council Fire Resources' },
+  twitter: { card: 'summary', title: 'How-To Guides for Sustainability Professionals', description: 'Practical, step-by-step guides for sustainability professionals — from writing reports and measuring emissions to setting targets and building strategies.' },
 };
 
 export default function HowToIndex() {
