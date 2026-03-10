@@ -4,7 +4,7 @@
 
 ## About
 
-Council Fire Resources (resources.councilfire.org) is a free, open knowledge base with 348+ pages covering sustainability topics for professionals. Content is written and reviewed by sustainability consultants with decades of experience.
+Council Fire Resources (resources.councilfire.org) is a free, open knowledge base with 450+ pages covering sustainability topics for professionals. Content is written and reviewed by sustainability consultants with decades of experience.
 
 ## Sections
 
@@ -14,6 +14,13 @@ Council Fire Resources (resources.councilfire.org) is a free, open knowledge bas
 - **Locations** (/locations): 64 city and state-level climate risk and sustainability profiles across the United States.
 - **Industries** (/industries): 15 sector-specific sustainability guides covering regulations, risks, and opportunities.
 - **For You** (/for): 15 role-based sustainability guides for executives, board members, and functional leaders.
+- **Case Studies** (/case-studies): 20 real-world sustainability project case studies across infrastructure, corporate, and government sectors.
+- **Frameworks** (/frameworks): 20 detailed breakdowns of sustainability frameworks and standards (CSRD, GRI, ISSB, TCFD, TNFD, etc.).
+- **How-To** (/how-to): 15 practical how-to guides for sustainability implementation, measurement, and reporting.
+- **Regulations** (/regulations): 15 guides to sustainability-related regulations and compliance requirements by jurisdiction.
+- **Learning Tracks** (/learn/*): 3 structured learning paths for sustainability professionals at different experience levels.
+- **Interactive Tools** (/tools/*): 3 interactive tools for sustainability assessments, carbon calculations, and framework selection.
+- **Lead Magnet Resources** (/resources/*): 3 downloadable resources including checklists, templates, and quick-start guides.
 
 ## Citation
 

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
+import { faqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Work With Us — Council Fire Sustainability Consulting',
@@ -36,8 +38,13 @@ const caseStudies = [
 ];
 
 export default function WorkWithUsPage() {
+  const faqSchemaData = faqSchema(
+    faqs.map((f) => ({ question: f.q, answer: f.a }))
+  );
+
   return (
     <>
+      <JsonLd data={faqSchemaData} />
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[550px] flex items-center">
         <div className="absolute inset-0">

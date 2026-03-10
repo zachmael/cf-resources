@@ -7,6 +7,7 @@ import ExploreMoreResources from '@/components/ExploreMoreResources';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import JsonLd from '@/components/JsonLd';
+import Image from 'next/image';
 import { renderMDX } from '@/lib/mdx';
 import { getContentBySlug, getContentSlugs } from '@/lib/content';
 import { breadcrumbSchema, definedTermSchema, faqSchema } from '@/lib/schema';
@@ -97,7 +98,7 @@ export default async function GlossaryPage({ params }: Props) {
       {/* Hero area */}
       <section className="relative overflow-hidden min-h-[280px] flex items-end">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <Image src={heroImage} alt={`${meta.title} — sustainability concept`} fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/60 to-brand-900/30" />
         </div>
 
@@ -134,12 +135,14 @@ export default async function GlossaryPage({ params }: Props) {
 
             {/* Mid-article image */}
             <figure className="my-10 rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src={midImage}
-                alt={`${meta.title} — sustainability in practice`}
-                className="w-full h-64 md:h-80 object-cover"
-                loading="lazy"
-              />
+              <div className="relative w-full h-64 md:h-80">
+                <Image
+                  src={midImage}
+                  alt={`${meta.title} — sustainability in practice`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <figcaption className="bg-brand-50 px-4 py-3 text-sm text-brand-500 italic">
                 Council Fire helps organizations navigate {(meta.category as string || 'sustainability').toLowerCase()} challenges with practical, expert-driven strategies.
               </figcaption>

@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getContentBySlug('for', params.slug);
   if (!item) return {};
-  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0]; return { title: item.meta.title, description: item.meta.description, alternates: { canonical: `/for/${params.slug}` }, other: { 'last-modified': lu } };
+  const lu = (item.meta.lastUpdated as string) || new Date().toISOString().split('T')[0]; return { title: item.meta.title, description: item.meta.description, openGraph: { title: item.meta.title, description: item.meta.description, url: `https://resources.councilfire.org/for/${params.slug}`, type: 'article', siteName: 'Council Fire Resources' }, twitter: { card: 'summary', title: item.meta.title, description: item.meta.description }, alternates: { canonical: `/for/${params.slug}` }, other: { 'last-modified': lu } };
 }
 
 export default async function ForPage({ params }: Props) {

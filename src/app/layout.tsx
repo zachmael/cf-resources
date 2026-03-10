@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'Sustainability & Climate Resilience Resources | Council Fire',
     template: '%s | Council Fire Resources',
   },
-  description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance. Glossary, framework comparisons, and city-level climate data.',
+  description: 'Free sustainability resources from Council Fire: 450+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance. Glossary, framework comparisons, and city-level climate data.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -26,12 +26,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Council Fire Resources',
     title: 'Sustainability & Climate Resilience Resources | Council Fire',
-    description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance.',
+    description: 'Free sustainability resources from Council Fire: 450+ expert guides on ESG reporting, climate resilience, carbon strategy, and environmental compliance.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sustainability & Climate Resilience Resources | Council Fire',
-    description: 'Free sustainability resources from Council Fire: 300+ expert guides on ESG, climate resilience, and environmental compliance.',
+    description: 'Free sustainability resources from Council Fire: 450+ expert guides on ESG, climate resilience, and environmental compliance.',
   },
   robots: { index: true, follow: true },
 };

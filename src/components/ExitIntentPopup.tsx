@@ -119,6 +119,7 @@ export default function ExitIntentPopup() {
                 <input
                   type="email"
                   required
+                  aria-label="Email address"
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle'); }}
                   placeholder="Enter your email"

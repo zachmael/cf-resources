@@ -57,6 +57,7 @@ export default function LeadMagnetGate({ title, description, source, children }:
             <input
               type="email"
               required
+              aria-label="Email address"
               value={email}
               onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('gate'); }}
               placeholder="Enter your work email"

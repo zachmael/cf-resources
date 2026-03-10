@@ -17,6 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: item.meta.title,
     description: item.meta.description,
+    openGraph: { title: item.meta.title, description: item.meta.description, url: `https://resources.councilfire.org/regulations/${params.slug}`, type: 'article', siteName: 'Council Fire Resources' },
+    twitter: { card: 'summary', title: item.meta.title, description: item.meta.description },
     alternates: { canonical: `/regulations/${params.slug}` },
     other: { 'last-modified': lu },
   };

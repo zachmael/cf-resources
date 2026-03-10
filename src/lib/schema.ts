@@ -7,7 +7,15 @@ export function organizationSchema() {
     name: 'Council Fire',
     url: 'https://councilfire.org',
     logo: 'https://councilfire.org/logo.png',
-    sameAs: ['https://www.linkedin.com/company/councilfire'],
+    sameAs: [
+      'https://www.linkedin.com/company/council-fire/',
+      'https://x.com/councilfire',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      url: 'https://www.councilfire.org/contact',
+      contactType: 'customer service',
+    },
   };
 }
 
@@ -81,6 +89,6 @@ export function articleSchema(title: string, description: string, url: string, d
     url: `${BASE_URL}${url}`,
     author: organizationSchema(),
     publisher: organizationSchema(),
-    ...(dateModified && { dateModified }),
+    ...(dateModified && { datePublished: dateModified, dateModified }),
   };
 }
