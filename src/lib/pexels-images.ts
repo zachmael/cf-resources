@@ -182,7 +182,7 @@ export const personaImageMap: Record<string, string> = {
 export const regulationImageMap: Record<string, string> = {
   'csrd-corporate-sustainability-reporting-directive':          px(11682403),  // European Parliament hemicycle, Strasbourg
   'sec-climate-disclosure-rule':                               px(210607),    // stock exchange board, Wall Street
-  'eu-taxonomy-regulation':                                    px(13153479),  // EU Commission flags, Brussels
+  'eu-taxonomy-regulation':                                    px(13219441),  // EU flags, institutional
   'california-sb253-climate-corporate-data-accountability-act': px(1141853),  // Golden Gate Bridge fog, California
   'california-sb261-climate-related-financial-risk-act':       px(1485894),   // Bay Bridge sunset silhouette, CA
   'cbam-carbon-border-adjustment-mechanism':                   px(9861245),   // factory smokestacks, industrial

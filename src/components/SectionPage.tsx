@@ -8,7 +8,7 @@ import RelatedSidebar from './RelatedSidebar';
 import ExploreMoreResources from './ExploreMoreResources';
 import JsonLd from './JsonLd';
 import { breadcrumbSchema, articleSchema, faqSchema, howToSchema } from '@/lib/schema';
-import { type ContentMeta } from '@/lib/content';
+import { type ContentMeta, resolveRelatedPage } from '@/lib/content';
 import ProgressBar from './ProgressBar';
 import { estimateReadingTime } from '@/lib/reading-time';
 import { type ReactElement } from 'react';
@@ -186,10 +186,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
 
           <aside className="mt-10 lg:mt-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
             <RelatedSidebar
-              items={relatedPages.map((p) => ({
-                title: p,
-                href: `/${section}/${p.toLowerCase().replace(/[\s()]+/g, '-')}`,
-              }))}
+              items={relatedPages.map((p) => resolveRelatedPage(p, section))}
               section={section}
               topic={meta.title}
             />

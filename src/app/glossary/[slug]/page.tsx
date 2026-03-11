@@ -9,7 +9,7 @@ import CTA from '@/components/CTA';
 import JsonLd from '@/components/JsonLd';
 import Image from 'next/image';
 import { renderMDX } from '@/lib/mdx';
-import { getContentBySlug, getContentSlugs } from '@/lib/content';
+import { getContentBySlug, getContentSlugs, resolveRelatedPage } from '@/lib/content';
 import { breadcrumbSchema, definedTermSchema, faqSchema, articleSchema } from '@/lib/schema';
 import { getRelevantCFLinks } from '@/lib/cf-links';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
@@ -213,10 +213,7 @@ export default async function GlossaryPage({ params }: Props) {
             {relatedTerms.length > 0 && (
               <RelatedSidebar
                 title="Related Terms"
-                items={relatedTerms.map((t) => ({
-                  title: t,
-                  href: `/glossary/${t.toLowerCase().replace(/[\s()]+/g, '-')}`,
-                }))}
+                items={relatedTerms.map((t) => resolveRelatedPage(t, 'glossary'))}
               />
             )}
             <p className="text-xs text-brand-400 pl-1">Last updated: {lastUpdated}</p>

@@ -46,8 +46,7 @@ const navGroups: NavGroup[] = [
 ];
 
 const topLevelLinks: NavItem[] = [
-  { label: 'Tools', href: '/tools' },
-  { label: 'Resources', href: '/resources' },
+  { label: 'Tools & Resources', href: '/tools' },
 ];
 
 function NavDropdown({ group }: { group: NavGroup }) {

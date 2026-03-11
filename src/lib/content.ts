@@ -62,3 +62,52 @@ export function getAllContentForSearch(): { title: string; slug: string; section
   }
   return items;
 }
+
+// Cache for slug→title lookups (built once at build time)
+let _slugTitleMap: Map<string, string> | null = null;
+
+/**
+ * Build a map of "section/slug" → title for all content across all sections.
+ * Also maps plain "slug" → title for glossary terms.
+ */
+function getSlugTitleMap(): Map<string, string> {
+  if (_slugTitleMap) return _slugTitleMap;
+  const sections = ['glossary', 'compare', 'locations', 'for', 'guides', 'industries', 'regulations', 'how-to', 'case-studies', 'frameworks'];
+  const map = new Map<string, string>();
+  for (const section of sections) {
+    for (const item of getAllContent(section)) {
+      // Cross-section key: "frameworks/gri-standards" → "GRI Standards"
+      map.set(`${section}/${item.meta.slug}`, item.meta.title);
+      // Plain slug key (may collide across sections, last write wins — fine for fallback)
+      map.set(item.meta.slug, item.meta.title);
+    }
+  }
+  _slugTitleMap = map;
+  return map;
+}
+
+/**
+ * Resolve a related page reference to { title, href }.
+ * Handles both cross-section ("frameworks/gri-standards") and same-section ("sustainable-finance") formats.
+ */
+export function resolveRelatedPage(ref: string, currentSection: string): { title: string; href: string } {
+  const map = getSlugTitleMap();
+
+  if (ref.includes('/')) {
+    // Cross-section ref like "frameworks/gri-standards"
+    const title = map.get(ref) || slugToFallbackTitle(ref.split('/').pop() || ref);
+    return { title, href: `/${ref}` };
+  }
+
+  // Same-section ref like "sustainable-finance"
+  const sectionKey = `${currentSection}/${ref}`;
+  const title = map.get(sectionKey) || map.get(ref) || slugToFallbackTitle(ref);
+  return { title, href: `/${currentSection}/${ref}` };
+}
+
+/** Convert a slug to a human-readable fallback title (e.g. "gri-standards" → "Gri Standards") */
+function slugToFallbackTitle(slug: string): string {
+  return slug
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
