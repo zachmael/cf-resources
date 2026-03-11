@@ -28,6 +28,34 @@ const tracks = [
     steps: 5,
     icon: '🌍',
   },
+  {
+    slug: 'carbon-strategy',
+    title: 'Building a Carbon Strategy',
+    desc: 'From understanding your carbon footprint to setting science-based targets — a complete path to decarbonization.',
+    steps: 7,
+    icon: '🏭',
+  },
+  {
+    slug: 'sustainable-supply-chains',
+    title: 'Sustainable Supply Chain Essentials',
+    desc: 'Learn how to assess, improve, and report on sustainability across your value chain.',
+    steps: 6,
+    icon: '🔗',
+  },
+  {
+    slug: 'biodiversity-and-nature',
+    title: 'Biodiversity & Nature for Business',
+    desc: 'Understand your organization\'s relationship with nature and the emerging frameworks for nature-related disclosure.',
+    steps: 6,
+    icon: '🌿',
+  },
+  {
+    slug: 'b-corp-journey',
+    title: 'The B Corp Journey',
+    desc: 'Everything you need to know about B Corp certification — from understanding the standard to preparing your application.',
+    steps: 6,
+    icon: '🅱️',
+  },
 ];
 
 export default function LearnPage() {

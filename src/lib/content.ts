@@ -93,16 +93,21 @@ function getSlugTitleMap(): Map<string, string> {
 export function resolveRelatedPage(ref: string, currentSection: string): { title: string; href: string } {
   const map = getSlugTitleMap();
 
+  // Normalize: convert title-cased refs like "CSRD" or "Scope 3 Emissions" to slug form
+  const slugified = ref.toLowerCase().replace(/[\s()]+/g, '-');
+
   if (ref.includes('/')) {
     // Cross-section ref like "frameworks/gri-standards"
-    const title = map.get(ref) || slugToFallbackTitle(ref.split('/').pop() || ref);
-    return { title, href: `/${ref}` };
+    const title = map.get(ref) || map.get(slugified) || slugToFallbackTitle(ref.split('/').pop() || ref);
+    const href = `/${slugified}`;
+    return { title, href };
   }
 
-  // Same-section ref like "sustainable-finance"
+  // Same-section ref like "sustainable-finance" or title-cased "Double Materiality"
   const sectionKey = `${currentSection}/${ref}`;
-  const title = map.get(sectionKey) || map.get(ref) || slugToFallbackTitle(ref);
-  return { title, href: `/${currentSection}/${ref}` };
+  const sectionKeySlug = `${currentSection}/${slugified}`;
+  const title = map.get(sectionKey) || map.get(sectionKeySlug) || map.get(ref) || map.get(slugified) || slugToFallbackTitle(ref);
+  return { title, href: `/${currentSection}/${slugified}` };
 }
 
 /** Convert a slug to a human-readable fallback title (e.g. "gri-standards" → "Gri Standards") */
