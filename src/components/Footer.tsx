@@ -107,6 +107,8 @@ export default function Footer() {
               <li><Link href="/how-to" className="text-gray-400 hover:text-white transition-colors">How To</Link></li>
               <li><Link href="/regulations" className="text-gray-400 hover:text-white transition-colors">Regulations</Link></li>
               <li><Link href="/industries" className="text-gray-400 hover:text-white transition-colors">Industries</Link></li>
+              <li><Link href="/tools" className="text-gray-400 hover:text-white transition-colors">Tools & Resources</Link></li>
+              <li><Link href="/learn" className="text-gray-400 hover:text-white transition-colors">Learning Tracks</Link></li>
             </ul>
           </div>
 
@@ -116,7 +118,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li><a href="https://www.councilfire.org" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
               <li><a href="https://www.councilfire.org/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="https://www.councilfire.org/what-we-do" className="text-gray-400 hover:text-white transition-colors">What We Do</a></li>
+              <li><a href="https://www.councilfire.org/expertise" className="text-gray-400 hover:text-white transition-colors">Our Expertise</a></li>
               <li><a href="https://www.councilfire.org/blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
             </ul>
           </div>

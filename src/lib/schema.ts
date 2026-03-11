@@ -6,7 +6,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: 'Council Fire',
     url: 'https://councilfire.org',
-    logo: 'https://councilfire.org/logo.png',
+    logo: 'https://resources.councilfire.org/logo-dark.png',
     sameAs: [
       'https://www.linkedin.com/company/council-fire/',
       'https://x.com/councilfire',

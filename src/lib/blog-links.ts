@@ -30,36 +30,6 @@ const blogPosts: BlogPost[] = [
     url: 'https://www.councilfire.org/blog/nature-positive-business-biodiversity-integrating-nature-into-corporate-strategy',
     keywords: ['biodiversity', 'nature', 'tnfd', 'ecosystem', 'deforestation', 'natural capital', 'nature-positive'],
   },
-  {
-    title: 'Corporate Water Stewardship: Strategy, Risks & Opportunities',
-    url: 'https://www.councilfire.org/blog/corporate-water-stewardship-strategy-risks-and-opportunities',
-    keywords: ['water', 'stewardship', 'water stress', 'aquifer', 'water risk', 'desalination', 'water scarcity'],
-  },
-  {
-    title: 'ISO 14092: Climate Adaptation Planning for Local Governments',
-    url: 'https://www.councilfire.org/blog/iso-14092-climate-adaptation-planning-for-local-governments',
-    keywords: ['iso', 'adaptation', 'local government', 'municipality', 'climate action plan', 'community resilience'],
-  },
-  {
-    title: 'Paris Agreement Article 6: Carbon Market Rules 2025',
-    url: 'https://www.councilfire.org/blog/paris-agreement-article-6-carbon-market-rules-2025',
-    keywords: ['paris agreement', 'carbon market', 'carbon credit', 'offset', 'article 6', 'ndcs', 'emissions trading'],
-  },
-  {
-    title: 'ESG Recalibration 2026: Beyond Compliance',
-    url: 'https://www.councilfire.org/blog/esg-recalibration-2026-beyond-compliance',
-    keywords: ['esg', 'recalibration', 'governance', 'investor', 'anti-esg', 'greenwashing', 'regulation'],
-  },
-  {
-    title: 'Grid Derating: How Climate Change Is Reshaping Energy Infrastructure',
-    url: 'https://www.councilfire.org/blog/grid-derating-how-climate-change-is-reshaping-energy-infrastructure',
-    keywords: ['energy', 'grid', 'infrastructure', 'renewable', 'electricity', 'power', 'climate impact', 'derating'],
-  },
-  {
-    title: 'Community Resilience & Federal Funding',
-    url: 'https://www.councilfire.org/blog/community-resilience-federal-funding',
-    keywords: ['community', 'resilience', 'federal', 'funding', 'grant', 'fema', 'disaster', 'municipal'],
-  },
 ];
 
 export function getRelatedBlogPosts(
