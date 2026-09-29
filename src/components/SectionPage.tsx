@@ -15,8 +15,6 @@ import { type ReactElement } from 'react';
 import { getLocationImages, getTopicImage } from '@/lib/pexels-images';
 import { getCrossSectionLinks, getSameSectionLinks } from '@/lib/cross-links';
 import { getRelatedBlogPosts } from '@/lib/blog-links';
-import { getRelevantCaseStudies } from '@/lib/case-study-links';
-import CaseStudyCallout from './CaseStudyCallout';
 import { getRelevantLeadMagnet } from '@/lib/lead-magnet-config';
 import LeadMagnetBanner from './LeadMagnetBanner';
 
@@ -55,7 +53,6 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
   const crossLinks = getCrossSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const sameLinks = getSameSectionLinks(section, meta.slug, meta.title, meta.description || '');
   const blogPosts = getRelatedBlogPosts(meta.title, meta.description || '', section);
-  const caseStudies = getRelevantCaseStudies(section, meta.slug, meta.title, meta.description);
   const leadMagnet = getRelevantLeadMagnet(section, meta.slug, meta.title);
 
   // Extract HowTo steps from content headings for how-to section
@@ -147,7 +144,6 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
               </div>
             )}
 
-            {caseStudies.length > 0 && <CaseStudyCallout studies={caseStudies} />}
 
             {/* Blog cross-links (moved from sidebar) */}
             {blogPosts.length > 0 && (
@@ -186,7 +182,7 @@ export default function SectionPage({ meta, rendered, section, sectionLabel, sec
 
           <aside className="mt-10 lg:mt-0 space-y-6 lg:sticky lg:top-24 lg:self-start">
             <RelatedSidebar
-              items={relatedPages.map((p) => resolveRelatedPage(p, section))}
+              items={relatedPages.map((p) => resolveRelatedPage(p, section)).filter((r) => r.href)}
               section={section}
               topic={meta.title}
             />

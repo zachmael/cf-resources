@@ -213,7 +213,7 @@ export default async function GlossaryPage({ params }: Props) {
             {relatedTerms.length > 0 && (
               <RelatedSidebar
                 title="Related Terms"
-                items={relatedTerms.map((t) => resolveRelatedPage(t, 'glossary'))}
+                items={relatedTerms.map((t) => resolveRelatedPage(t, 'glossary')).filter((r) => r.href)}
               />
             )}
             <p className="text-xs text-brand-400 pl-1">Last updated: {lastUpdated}</p>

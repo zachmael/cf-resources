@@ -33,7 +33,7 @@ function buildLastModMap() {
 
 const lastModMap = buildLastModMap();
 
-const INDEX_PAGES = ['/glossary', '/guides', '/how-to', '/regulations', '/compare', '/locations', '/industries', '/for'];
+const INDEX_PAGES = ['/glossary', '/guides', '/how-to', '/regulations', '/compare', '/industries', '/for'];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {

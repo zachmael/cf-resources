@@ -32,14 +32,12 @@ const navGroups: NavGroup[] = [
       { label: 'How-To Guides', href: '/how-to' },
       { label: 'Step-by-Step Guides', href: '/guides' },
       { label: 'Learning Tracks', href: '/learn' },
-      { label: 'Case Studies', href: '/case-studies' },
     ],
   },
   {
     label: 'Explore',
     items: [
       { label: 'By Industry', href: '/industries' },
-      { label: 'By Location', href: '/locations' },
       { label: 'By Role', href: '/for' },
     ],
   },
