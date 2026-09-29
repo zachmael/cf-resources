@@ -27,14 +27,14 @@ const faqs = [
   { q: 'What does a typical engagement look like?', a: 'Every engagement starts with a discovery call to understand your goals. From there, we scope a custom project — whether that\'s a 4-week assessment, a multi-month strategy build, or ongoing advisory support.' },
   { q: 'How long do projects usually take?', a: 'Quick assessments take 4–6 weeks. Strategy development typically runs 3–6 months. Ongoing advisory relationships are structured in annual cycles. We\'ll give you a clear timeline upfront.' },
   { q: 'What size organizations do you work with?', a: 'We work with Fortune 500 companies, mid-market firms, municipalities, foundations, NGOs, and federal agencies. If sustainability matters to your organization, we can help.' },
-  { q: 'How is Council Fire different from other sustainability consultants?', a: 'We combine deep technical expertise with practical execution. We\'re a certified B Corp, Best for the World honoree, and we\'ve been doing this for over 20 years — before ESG was a buzzword.' },
+  { q: 'How is Council Fire different from other sustainability consultants?', a: 'We combine deep technical expertise with practical execution. We\'re a certified B Corp, Best for the World honoree, and we\'ve been doing this for nearly two decades — since before ESG was a buzzword.' },
   { q: 'What does it cost?', a: 'Project fees depend on scope, complexity, and duration. We offer a free initial consultation to understand your needs and provide a transparent proposal. No surprises.' },
 ];
 
 const caseStudies = [
-  { title: 'Port Authority Sustainability Strategy', desc: 'Developed a comprehensive sustainability strategy that identified $125M in savings through efficiency and resilience improvements.', tag: 'Infrastructure', href: '/case-studies' },
-  { title: 'Fortune 500 CSRD Readiness', desc: 'Guided a multinational corporation through double materiality assessment and ESRS gap analysis ahead of EU reporting deadlines.', tag: 'Corporate', href: '/case-studies' },
-  { title: 'Municipal Climate Action Plan', desc: 'Partnered with a major city to develop a science-based climate action plan with community engagement at its core.', tag: 'Government', href: '/case-studies' },
+  { title: 'Maryland Port Administration', desc: "Transforming Baltimore's port into a model of sustainable development through sustainability strategy, stakeholder engagement, and storytelling.", tag: 'Government', href: 'https://www.councilfire.org/work/maryland-port-administration' },
+  { title: 'Walton Family Foundation', desc: 'Advising a preeminent philanthropic foundation and strengthening collaborations for healthy oceans.', tag: 'Philanthropy', href: 'https://www.councilfire.org/work/walton-family-foundation' },
+  { title: 'Environmental Defense Fund', desc: "Helping EDF's Fisheries Solution Center support twelve priority governments in moving to sustainable fisheries management.", tag: 'Non-Profit', href: 'https://www.councilfire.org/work/edf-fisheries' },
 ];
 
 export default function WorkWithUsPage() {
@@ -207,7 +207,7 @@ export default function WorkWithUsPage() {
               <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-800 dark:text-white tracking-tight">Case Study Highlights</h2>
               <p className="mt-3 text-brand-500 dark:text-gray-400 text-lg">Real outcomes from real engagements.</p>
             </div>
-            <Link href="/case-studies" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
+            <Link href="https://www.councilfire.org/work" className="hidden md:inline-flex items-center gap-3 text-sm font-semibold text-brand-800 dark:text-gray-200 group">
               View all
               <span className="flex items-center justify-center w-10 h-10 rounded-full bg-teal-500 text-white group-hover:bg-teal-600 transition-all group-hover:scale-105">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

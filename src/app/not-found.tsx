@@ -7,7 +7,6 @@ const popularLinks = [
   { label: 'Regulations', href: '/regulations', icon: '⚖️' },
   { label: 'Frameworks', href: '/frameworks', icon: '🏗️' },
   { label: 'Tools', href: '/tools', icon: '🧰' },
-  { label: 'Case Studies', href: '/case-studies', icon: '📊' },
 ];
 
 export default function NotFound() {

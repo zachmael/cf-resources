@@ -4,6 +4,8 @@ import matter from 'gray-matter';
 
 const contentDir = path.join(process.cwd(), 'content');
 
+const CONTENT_SECTIONS = ['glossary', 'compare', 'for', 'guides', 'industries', 'regulations', 'how-to', 'frameworks'];
+
 export interface ContentMeta {
   slug: string;
   title: string;
@@ -48,7 +50,7 @@ export function getAllContent(section: string): ContentItem[] {
 }
 
 export function getAllContentForSearch(): { title: string; slug: string; section: string; description: string }[] {
-  const sections = ['glossary', 'compare', 'locations', 'for', 'guides', 'industries', 'regulations', 'how-to', 'case-studies', 'frameworks'];
+  const sections = CONTENT_SECTIONS;
   const items: { title: string; slug: string; section: string; description: string }[] = [];
   for (const section of sections) {
     for (const item of getAllContent(section)) {
@@ -72,7 +74,7 @@ let _slugTitleMap: Map<string, string> | null = null;
  */
 function getSlugTitleMap(): Map<string, string> {
   if (_slugTitleMap) return _slugTitleMap;
-  const sections = ['glossary', 'compare', 'locations', 'for', 'guides', 'industries', 'regulations', 'how-to', 'case-studies', 'frameworks'];
+  const sections = CONTENT_SECTIONS;
   const map = new Map<string, string>();
   for (const section of sections) {
     for (const item of getAllContent(section)) {
@@ -99,7 +101,7 @@ export function resolveRelatedPage(ref: string, currentSection: string): { title
   if (ref.includes('/')) {
     // Cross-section ref like "frameworks/gri-standards"
     const title = map.get(ref) || map.get(slugified) || slugToFallbackTitle(ref.split('/').pop() || ref);
-    const href = `/${slugified}`;
+    const href = map.has(ref) || map.has(slugified) ? `/${slugified}` : '';
     return { title, href };
   }
 
@@ -107,7 +109,11 @@ export function resolveRelatedPage(ref: string, currentSection: string): { title
   const sectionKey = `${currentSection}/${ref}`;
   const sectionKeySlug = `${currentSection}/${slugified}`;
   const title = map.get(sectionKey) || map.get(sectionKeySlug) || map.get(ref) || map.get(slugified) || slugToFallbackTitle(ref);
-  return { title, href: `/${currentSection}/${slugified}` };
+  if (map.has(sectionKey) || map.has(sectionKeySlug)) return { title, href: `/${currentSection}/${slugified}` };
+  // A bare slug from another section (e.g. a how-to listed on a comparison page) links to that section; one that
+  // exists nowhere gets no href, and the caller drops it
+  const other = CONTENT_SECTIONS.find((s) => map.has(`${s}/${slugified}`));
+  return { title, href: other ? `/${other}/${slugified}` : '' };
 }
 
 /** Convert a slug to a human-readable fallback title (e.g. "gri-standards" → "Gri Standards") */

@@ -22,7 +22,7 @@ const sectionLabels: Record<string, string> = {
   for: 'For You',
 };
 
-const SECTIONS = ['glossary', 'compare', 'locations', 'guides', 'industries', 'for'];
+const SECTIONS = ['glossary', 'compare', 'guides', 'industries', 'for'];
 
 // Extract keywords from title and description
 function extractKeywords(title: string, description: string): string[] {
